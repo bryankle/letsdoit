@@ -5,12 +5,26 @@ import axios from 'axios';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: {}
+    }
+  }
+
   componentDidMount() {
     axios.get('/api')
-      .then(res => console.log(res))
+      .then(res => this.setState({ data: res.data }))
   }
 
   render() {
+
+    console.log(this.state);
+    const keys = Object.keys(this.state.data);
+    const dataList = keys.map((val) => {
+      return <li>{val + ': ' + this.state.data[val]}</li>
+    })
+
     return (
       <div className="App">
         <header className="App-header">
@@ -18,7 +32,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <ul>{dataList}</ul>
         </p>
       </div>
     );
