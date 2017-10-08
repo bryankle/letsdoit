@@ -29,7 +29,7 @@ class Header extends Component {
               active={activeItem === 'editorials'}
               onClick={this.handleItemClick}
             >
-              Editorials
+              Letsdoit
             </Menu.Item>
 
             <Menu.Menu position='right'>
