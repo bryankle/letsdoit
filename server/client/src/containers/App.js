@@ -35,7 +35,6 @@ class App extends Component {
       <div className="App">
         <Header />
         <TodoContainer />
-         
       </div>
     );
   }
