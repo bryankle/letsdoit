@@ -6,6 +6,7 @@ import TaskItem from './TaskItem';
   // Map over task items and set filters on different tabs
 
 class Tabs extends Component {
+
     render() {
 
         const allTasks = this.props.allTasks;

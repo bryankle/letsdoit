@@ -1,5 +1,8 @@
-import React from 'react'
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import React from 'react';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
+import Loadr from 'randloadr';
+
+const instance = new Loadr();
 
 const Loading = () => (
   <div>
@@ -7,7 +10,7 @@ const Loading = () => (
   {/* Use API to fetch generated loading messages */}
      {/* https://github.com/DimitarChristoff/loadr */}
       <Dimmer active inverted>
-        <Loader inverted>Wrangling tasks...</Loader>
+        <Loader inverted>{instance.get()}</Loader>
       </Dimmer>
   </div>
 )
