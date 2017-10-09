@@ -8,19 +8,32 @@ import TaskItem from './TaskItem';
 class Tabs extends Component {
 
     render() {
+        // Retrieve all tasks and filter by tab
 
-        const allTasks = this.props.allTasks;
+        const userTasks = this.props.allTasks;
         let activeTasks = [];
+        let completedTasks = [];
+        let allTasks = [];
 let panes = [
             { menuItem: 'Active', pane: activeTasks},
-            { menuItem: 'Completed', pane: [<p>hello</p>, <h1>world</h1>] },
-            { menuItem: 'All', pane: 'Tab 3 Content' },
+            { menuItem: 'Completed', pane: completedTasks },
+            { menuItem: 'All', pane: allTasks },
           ]
 
-        allTasks.forEach((task) => {
-            activeTasks.push(<TaskItem task={task.task} />)
-            activeTasks.push(<br/>)
+        userTasks.forEach((task) => {
+            console.log(task)
+            if (!task.completed) {
+                activeTasks.push(<TaskItem task={task.task} />)
+                activeTasks.push(<br/>);
+            }
+            else {
+                completedTasks.push(<TaskItem task={task.task} />)
+                completedTasks.push(<br/>);
+            }
+            allTasks.push(<TaskItem task={task.task} />)
+            allTasks.push(<br/>);
         })
+        console.log(activeTasks)
 
         return (
             <Tab panes={panes} renderActiveOnly={false} />
@@ -29,3 +42,5 @@ let panes = [
 }
 
 export default Tabs;
+
+

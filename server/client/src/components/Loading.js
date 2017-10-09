@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
-import Loadr from 'randloadr';
-
+import Loadr from 'randloadr'; // Random loading messages
 const instance = new Loadr();
 
 const Loading = () => (
