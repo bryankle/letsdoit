@@ -54,7 +54,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <h1>{this.state.data[0] ? 'Welcome, ' + this.state.data[0].name : 'Welcome'}</h1>
-        <TodoContainer allTasks={this.state.data}/>
+        <TodoContainer allTasks={this.props.tasks}/>
       </div>
     );
   }
@@ -62,7 +62,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    store: state
+    tasks: state.tasks
   }
 }
 
