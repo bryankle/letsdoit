@@ -23,6 +23,10 @@ class Todo extends Component {
         console.log(this.state.input);
         this.setState({ input: '' })
     }
+    // Replace in Redux
+    _addTask = function() {
+        let task = this.state.input;
+    }
 
     componentWillMount() {
         setTimeout(() => {
@@ -50,7 +54,10 @@ class Todo extends Component {
                     <h1>{this.state.input}</h1>
                     
                     <ProgressBar />
-                    <Tabs allTasks={this.props.allTasks[0].tasks}/>
+                    <Tabs 
+                        addTask={this._addTask}
+                        allTasks={this.props.allTasks[0].tasks}
+                        />
                     </Grid.Column>
                 </Grid>
             )
