@@ -6,7 +6,7 @@ const Task = db.define('task', {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
-	password: {
+	completed: {
 		type: Sequelize.BOOLEAN,
 		defaultValue: false
 	}
