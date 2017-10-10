@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import logo from '../images/logo.svg';
 import './App.css';
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { loadTasks } from '../actions';
+
 import Header from '../components/Header';
 import Login from './Login';
 import Registration from './Registration';
 import TodoContainer from './TodoContainer';
-
 /*
 
 App
@@ -52,4 +56,15 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasks
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ loadTasks }, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
