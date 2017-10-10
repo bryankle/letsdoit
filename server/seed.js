@@ -11,7 +11,10 @@ var {
 var data = {
   user: [
     {name: "bryan", password: "123password"}
-    ]
+    ],
+  task: [
+    {content: "haircut", completed: false}
+  ]
 };
 
 db.sync({force: true})
