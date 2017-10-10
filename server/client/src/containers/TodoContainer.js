@@ -24,9 +24,9 @@ class Todo extends Component {
         this.setState({ input: '' })
     }
     // Replace in Redux
-    _addTask = function() {
-        let task = this.state.input;
-    }
+    // _addTask = function() {
+    //     let task = this.state.input;
+    // }
 
     componentWillMount() {
         setTimeout(() => {

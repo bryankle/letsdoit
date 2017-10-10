@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadTasks } from '../actions';
+import { loadTasks } from '../actions/index';
 
 import Header from '../components/Header';
 import Login from './Login';
@@ -35,12 +35,16 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('/api')
-      .then(res => this.setState({ data: res.data }))
+      // .then(data => this.props.loadTasks(data))
+      .then(res => {
+        console.log('res', res)
+        this.props.loadTasks(res.data)
+        this.setState({ data: res.data })
+      })
+      .then(() => console.log('this.props', this.props))
   }
 
   render() {
-    console.log(this.state.data);
-    
     const keys = Object.keys(this.state.data);
     const dataList = keys.map((val) => {
       return <li>{val + ': ' + this.state.data[val]}</li>
@@ -58,7 +62,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks
+    store: state
   }
 }
 
