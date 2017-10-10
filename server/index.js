@@ -8,7 +8,7 @@ const db = require("./models").db;
 
 const bodyParser = require('body-parser');
 
-app.use(routes);
+app.use("/api", routes);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
