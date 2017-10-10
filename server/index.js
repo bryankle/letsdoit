@@ -4,7 +4,7 @@ const routes = require('./routes');
 const morgan = require('morgan');
 const app = express();
 
-const db = require("./models").db;
+const db = require("./database/models").db;
 
 const bodyParser = require('body-parser');
 

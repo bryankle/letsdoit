@@ -1,0 +1,1 @@
+- Reroute DB to correct location to ensure application functions

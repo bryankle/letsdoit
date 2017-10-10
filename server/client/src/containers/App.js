@@ -3,7 +3,6 @@ import logo from '../images/logo.svg';
 import './App.css';
 import axios from 'axios';
 import Header from '../components/Header';
-import TaskInput from '../components/TaskInput';
 import Login from './Login';
 import Registration from './Registration';
 import TodoContainer from './TodoContainer';
@@ -36,12 +35,7 @@ class App extends Component {
   }
 
   render() {
-
-    // If user is successfully retrieved
-    if (this.state.data !== null) {
-
-    }
-
+    console.log(this.state.data);
     
     const keys = Object.keys(this.state.data);
     const dataList = keys.map((val) => {

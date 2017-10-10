@@ -56,7 +56,7 @@ class Todo extends Component {
                     <ProgressBar />
                     <Tabs 
                         addTask={this._addTask}
-                        allTasks={this.props.allTasks[0].tasks}
+                        allTasks={this.props.allTasks}
                         />
                     </Grid.Column>
                 </Grid>
