@@ -11,6 +11,7 @@ var {
 var data = {
   user: [
     {name: "bryan", password: "123password"}
+    ]
 };
 
 db.sync({force: true})
