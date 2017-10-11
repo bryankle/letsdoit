@@ -4,6 +4,8 @@ import ProgressBar from '../components/ProgressBar';
 import Tabs from '../components/Tabs';
 import Loading from '../components/Loading';
 
+import AddTask from '../../database/queries/AddTask';
+
 class Todo extends Component {
     constructor(props) {
         super(props)
@@ -57,7 +59,7 @@ class Todo extends Component {
                     
                     <ProgressBar />
                     <Tabs 
-                        addTask={this._addTask}
+                        // addTask={this._addTask}
                         allTasks={this.props.allTasks}
                         />
                     </Grid.Column>

@@ -28,3 +28,12 @@ Question
 -GOAL FOR TOMORROW
 - create routes with mock user and API requests from new routes 
 - then link redux actions to backend routes with axios
+
+10/11 Notes
+- Tried importing AddTask query method from database, unable to due to create-react-app restriction of importing modules outside of src folder
+- Suggestion 
+	- Import query methods into server routes for GET/POST/UDPATE/DELETE
+	- Use axios to communicate to database through server
+	- User adds task --> axios POST --> accesses POST route on express --> query to DB established and task added to DB --> reload tasks from DB to redux --> re render all tasks
+
+
