@@ -10,3 +10,10 @@ export const loadTasks = (tasks) => {
 		payload: tasks
 	}
 }
+
+export const addTask = (task) => {
+	return {
+		type: ADD_TASK,
+		payload: task
+	}
+}

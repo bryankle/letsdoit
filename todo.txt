@@ -1,1 +1,30 @@
 - Reroute DB to correct location to ensure application functions
+- Add task with query and live render when task is added to database
+
+Question
+- Can I add to the tasks in the database by querying the database directly and associating that with a Redux action?
+- Or make a POST http request
+
+- UpstarMusic sample imports database queries into actions and nests return functions
+
+// Will work differently when implementing user login function
+// Will not grab user task data until login is successful
+// Create more routes for specific users and tasks
+// Add PUT, POST, GET, and DELETE
+
+- STUDY JUKE BACKEND FOR PUT POST GET AND DELETE
+- MAP OUT USER LOGIN TO TASK LOAD
+- REDUX WILL ONLY BE USED FOR HOLDING ONTO DATA 
+- action used to perform API fetching
+
+
+- Make user page for routes with GET POST PUT AND DELETE
+- /api/userid/tasks to retrieve all tasks
+- /api/userid/tasks/taskid to retrieve specific task
+- use axios on actions to reference api routes
+- what is the payload?
+- maybe API payload is always tasks
+
+-GOAL FOR TOMORROW
+- create routes with mock user and API requests from new routes 
+- then link redux actions to backend routes with axios

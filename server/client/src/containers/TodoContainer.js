@@ -20,13 +20,16 @@ class Todo extends Component {
     }
 
     handleSubmit = function() {
-        console.log(this.state.input);
+        console.log('Handling submission...');
+
+
+
         this.setState({ input: '' })
     }
     // Replace in Redux
-    // _addTask = function() {
-    //     let task = this.state.input;
-    // }
+    _addTask = function() {
+        let task = this.state.input;
+    }
 
     componentWillMount() {
         setTimeout(() => {
@@ -35,20 +38,19 @@ class Todo extends Component {
     }
 
     render() {
+        console.log('this.props')
         console.log(this.props)
         if (!this.state.loading) {
             return(
                 <Grid centered columns={2}>
                     <Grid.Column>
-                
+                {/* Move form to separate component at later time */}
                     <Form 
                     onSubmit={this.handleSubmit}>
                         <Input 
                             value={this.state.input}
                             onChange={this.handleInput} 
-                            onSubmit={function() {
-                                console.log("hello")
-                            }}
+                            onSubmit={this.handleSubmit}
                             placeholder="Let's do something" />
                     </Form>
                     <h1>{this.state.input}</h1>

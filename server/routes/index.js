@@ -13,6 +13,11 @@ const testJson = require('../test.json');
 //     res.send('Getting from router')
 // });
 
+// Will work differently when implementing user login function
+// Will not grab user task data until login is successful
+// Create more routes for specific users and tasks
+// Add PUT, POST, GET, and DELETE
+
 router.get('/', function(req, res) {
 	console.log("HELLO GETTING THE API");
 	// User.findAll()
