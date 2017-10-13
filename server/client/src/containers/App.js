@@ -47,6 +47,11 @@ class App extends Component {
         // this.setState({ data: res.data })
       })
       .then(() => console.log('this.props', this.props))
+
+    axios.post('/signup', {
+      "username": "bryankle",
+      "password": "test"
+    })
   }
 
   render() {

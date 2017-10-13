@@ -41,7 +41,7 @@ class Todo extends Component {
             return(
                 <Grid centered columns={2}>
                     <Grid.Column>
-                {/* Move form to separate component at later time */}
+                {/* Move form to separate container? at later time */}
                     <Form 
                     onSubmit={this.handleSubmit}>
                         <Input 
