@@ -49,7 +49,7 @@ class App extends Component {
       .then(() => console.log('this.props', this.props))
 
     axios.post('/signup', {
-      "username": "bryankle",
+      "name": "bryankle",
       "password": "test"
     })
   }
