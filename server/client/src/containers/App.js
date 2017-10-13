@@ -7,18 +7,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadTasks } from '../actions/index';
 
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Login from './Login';
 import Registration from './Registration';
+import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
 /*
 
 App
-|_Header
+|_Navbar
 |_TodoContainer
   |_Input
   |_ProgressBar
-  |_Tabs
+  |_Tasks
     |_TaskItem
 
 
@@ -32,29 +33,28 @@ class App extends Component {
       data: {}
     }
   }
+  // Initial task fetching
+    // componentDidMount contacts API to request tasks from server which contacts database for tasks
+    // Tasks are received and sent to Redux store as 'task' property
+
 
   componentDidMount() {
     axios.get('/api')
       // .then(data => this.props.loadTasks(data))
       .then(res => {
         console.log('res', res)
-        this.props.loadTasks(res.data)
-        this.setState({ data: res.data })
+        this.props.loadTasks(res.data) // Redux action, required
+        // this.setState({ data: res.data })
       })
       .then(() => console.log('this.props', this.props))
   }
 
   render() {
-    const keys = Object.keys(this.state.data);
-    const dataList = keys.map((val) => {
-      return <li>{val + ': ' + this.state.data[val]}</li>
-    })
-
     return (
       <div className="App">
+        <Navbar />
         <Header />
-        <h1>{this.state.data[0] ? 'Welcome, ' + this.state.data[0].name : 'Welcome'}</h1>
-        <TodoContainer allTasks={this.props.tasks}/>
+        <TodoContainer />
       </div>
     );
   }

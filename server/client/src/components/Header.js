@@ -1,57 +1,7 @@
-import React, { Component } from 'react';
-import {
-    Button,
-    Container,
-    Divider,
-    Grid,
-    Icon,
-    Image,
-    List,
-    Menu,
-    Segment,
-    Visibility,
-    Dropdown
-  } from 'semantic-ui-react'
+import React from 'react';
 
-class Header extends Component {
-    
-    state = {}
-    
-      handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-    
-      render() {
-        const { activeItem } = this.state
-    
-        return (
-          <Menu>
-            <Menu.Item
-              name='editorials'
-              active={activeItem === 'editorials'}
-              onClick={this.handleItemClick}
-            >
-              Letsdoit
-            </Menu.Item>
-
-            <Menu.Menu position='right'>
-                <Menu.Item
-                name='upcomingEvents'
-                active={activeItem === 'upcomingEvents'}
-                onClick={this.handleItemClick}
-                >
-                Sign Up
-                </Menu.Item>
-                <Menu.Item
-                name='upcomingEvents'
-                active={activeItem === 'upcomingEvents'}
-                onClick={this.handleItemClick}
-                >
-                Sign In
-                </Menu.Item>
-            </Menu.Menu>
-          </Menu>
-        )
-      }
+export default function() {
+	return (
+		<h1>Welcome</h1>
+	)
 }
-// When user is not signed in, display Login and Sign Up
-// When user is signed in, display only Sign Out
-export default Header;

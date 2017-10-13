@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Input, Form } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
-import Tabs from '../components/Tabs';
+import Tasks from './Tasks';
 import Loading from '../components/Loading';
-
-import AddTask from '../../database/queries/AddTask';
 
 class Todo extends Component {
     constructor(props) {
@@ -23,9 +21,6 @@ class Todo extends Component {
 
     handleSubmit = function() {
         console.log('Handling submission...');
-
-
-
         this.setState({ input: '' })
     }
     // Replace in Redux
@@ -55,13 +50,9 @@ class Todo extends Component {
                             onSubmit={this.handleSubmit}
                             placeholder="Let's do something" />
                     </Form>
-                    <h1>{this.state.input}</h1>
                     
                     <ProgressBar />
-                    <Tabs 
-                        // addTask={this._addTask}
-                        allTasks={this.props.allTasks}
-                        />
+                    <Tasks />
                     </Grid.Column>
                 </Grid>
             )

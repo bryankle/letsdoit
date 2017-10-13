@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+// move tpo controllr
 const User = require('../database/models/').User;
-const Task = require('../database/models/').Task;
+const Task = require('../database/models/').Task 
 
+
+const Authentication = require('../controllers/authentication');
 
 // Task seed data
 const testJson = require('../test.json');
 
-// router.get('/', function(req, res) {
-//     console.log("hello world")
-//     res.send('Getting from router')
-// });
+// router.use('/users', require('./users'));
 
 // Will work differently when implementing user login function
 // Will not grab user task data until login is successful
@@ -19,19 +19,12 @@ const testJson = require('../test.json');
 // Add PUT, POST, GET, and DELETE
 
 router.get('/', function(req, res) {
-	console.log("HELLO GETTING THE API");
-	// User.findAll()
-	// 	.then((res) => {
-	// 		console.log("GRABBING USER DATA")
-	// 		console.log(res);
-	// 	})
+	console.log("Connected to API");
 	Task.findAll()
 		.then((data) => {
-			console.log("GRABBING USER TASKS")
-			// console.log(data);
+			console.log("Retrieivng user tasks")
 		    res.json(data);
 		})
-    // res.json(testJson);
 });
 
 

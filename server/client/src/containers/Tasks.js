@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Tab, Checkbox } from 'semantic-ui-react';
-import TaskItem from './TaskItem';
+import TaskItem from '../components/TaskItem';
+
+import { connect } from 'react-redux';
 
 
   // Map over task items and set filters on different tabs
@@ -8,9 +10,9 @@ import TaskItem from './TaskItem';
 class Tabs extends Component {
 
     render() {
-        // Retrieve all tasks and filter by tab
 
-        const userTasks = this.props.allTasks;
+        // this.props.allTasks passed down by 
+        const userTasks = this.props.tasks;
         console.log('userTasks', userTasks)
         let activeTasks = [];
         let completedTasks = [];
@@ -42,6 +44,13 @@ class Tabs extends Component {
     }
 }
 
-export default Tabs;
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasks
+  }
+}
+
+
+export default connect(mapStateToProps, null)(Tabs);
 
 

@@ -36,4 +36,12 @@ Question
 	- Use axios to communicate to database through server
 	- User adds task --> axios POST --> accesses POST route on express --> query to DB established and task added to DB --> reload tasks from DB to redux --> re render all tasks
 
+- uuse redux thunk for axios async
+
+- User Authentication Flow
+	1. User logs in
+	2. Successful login
+	3. User name and ID recorded into state
+	4. Perform GET request for user tasks through /api/user/:userId/tasks
+
 
