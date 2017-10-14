@@ -1,5 +1,12 @@
 const CreateUser = require('../database/queries/CreateUser');
 const User = require('../database/models/User');
+const jwt = require('jwt-simple');
+const config = require('../config');
+
+function tokenForUser(user) {
+	const timestamp = new Date().getTime();
+	return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+}
 
 exports.signup = function(req, res, next) {
 	// See if a user with the given email exists
@@ -17,9 +24,9 @@ exports.signup = function(req, res, next) {
 			name: name,
 			password: password
 		})
-		.then(() => {
+		.then((user) => {
 			console.log('User created')
-			res.json({ success: true })
+			res.json({ token: tokenForUser(user) })
 		})
 		.catch((err) => console.log('Username already exists'))
 
