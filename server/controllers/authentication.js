@@ -1,8 +1,9 @@
 const CreateUser = require('../database/queries/CreateUser');
 const User = require('../database/models/User');
-const jwt = require('jwt-simple');
-const config = require('../config');
+const jwt = require('jwt-simple'); // Generates JWT token for user
+const config = require('../config'); // File containing secret key for generating token
 
+// Generates JWT token for user
 function tokenForUser(user) {
 	const timestamp = new Date().getTime();
 	return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
@@ -30,16 +31,4 @@ exports.signup = function(req, res, next) {
 		})
 		.catch((err) => console.log('Username already exists'))
 
-
-	console.log("The name you entered was:", name);
-	console.log("The password you entered was:", password);
-
-	// CreateUser(name, password);
-
-	// If a user with email exists, return an error
-
-	// If a user with email does not exist, create and save user record
-
-	// Respond to request indicating the user was created
-	// res.send({ success: true })
 }
