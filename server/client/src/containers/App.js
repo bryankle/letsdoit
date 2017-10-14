@@ -6,6 +6,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadTasks } from '../actions/index';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
 import Login from './Login';
@@ -56,11 +57,16 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
+
       <div className="App">
         <Navbar />
-        <Header />
-        <TodoContainer />
+        <Switch>
+          <Route path="/" component={TodoContainer} />
+        </Switch>
       </div>
+
+      </Router>
     );
   }
 }

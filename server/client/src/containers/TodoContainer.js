@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Input, Form } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
+import Header from '../components/Header';
 import Loading from '../components/Loading';
 
 class Todo extends Component {
@@ -39,7 +40,10 @@ class Todo extends Component {
         console.log(this.props)
         if (!this.state.loading) {
             return(
+                <div>
+                <Header />
                 <Grid centered columns={2}>
+                
                     <Grid.Column>
                 {/* Move form to separate container? at later time */}
                     <Form 
@@ -55,6 +59,7 @@ class Todo extends Component {
                     <Tasks />
                     </Grid.Column>
                 </Grid>
+                </div>
             )
         }
         else {
