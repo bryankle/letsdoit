@@ -3,7 +3,8 @@ import {
 	ADD_TASK,
 	DELETE_TASK,
 	LOAD_TASKS,
-	AUTH_USER
+	AUTH_USER,
+	AUTH_ERROR
 } from './types';
 
 export const loadTasks = (tasks) => {
@@ -34,7 +35,9 @@ export function signinUser({ name, password }, redirect) {
 				// - redirect tot he route '/feature' --> '/tasks'
 				redirect()
 			})
-			.catch()
+			.catch(() => {
+				dispatch(authError('Bad Login Info'))
+			})
 
 	// Submit username/password to the server
 
@@ -43,5 +46,12 @@ export function signinUser({ name, password }, redirect) {
 	// If request is bad
 	// - Show an error to the user
 
+	}
+}
+
+export function authError(error) {
+	return {
+		type: AUTH_ERROR,
+		payload: error
 	}
 }
