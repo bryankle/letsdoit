@@ -11,21 +11,25 @@ const jwtOptions = {
 };
 
 // Create JWT strategy
-const JwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 	// Payload is decoded JWT token
 	// See if the user Id in te payload exists in our database
 	// Otherwise, call done without a user object
 	User.findById(payload.sub)
 		.then(function(user) {
-
+			done(null, user)
 		})
-		.catch((err) => console.log(err))
-	// User.findById(payload.sub, function(err, user) {
+		.catch(() => done(null, false))
+
+
+	// return User.findById(payload.sub, function(err, user) {
 	// 	if (err) { return done(err, false) }
 	// 	if (user) {
+	// 		console.log('hello')
 	// 		done(null, user);
 	// 	}
 	// 	else {
+	// 		console.log('goodbye')
 	// 		done(null, false);
 	// 	}
 	// })
@@ -33,3 +37,4 @@ const JwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 
 // Tell passport to use this strategy
 passport.use(jwtLogin)
+

@@ -6,7 +6,10 @@ const Task = require('../database/models/').Task
 
 
 const Authentication = require('../controllers/authentication');
-
+const passportService = require('../services/passport');
+const passport = require('passport');
+// Passport middleware
+const requireAuth = passport.authenticate('jwt', { session: false }); //prevents passport from using cookies and to use jwt tokens
 // Task seed data
 const testJson = require('../test.json');
 
@@ -27,7 +30,11 @@ module.exports = function(app) {
 		})
 	});
 
-	app.post('/signup', Authentication.signup)
+	app.post('/signup', Authentication.signup);
+	app.get('/', requireAuth, function(req, res) {
+		console.log('auth success')
+		res.send({ 'hi': 'there' })
+	})
 
 
 }
