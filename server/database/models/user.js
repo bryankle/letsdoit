@@ -14,6 +14,13 @@ const User = db.define('user', {
 	}
 });
 
+User.prototype.comparePassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) { return callback(err); }
+    callback(null, isMatch);
+  })
+}
+
 // On save hook, encrypt password
 User.beforeCreate(function(user, options) {
     return cryptPassword(user.password)
