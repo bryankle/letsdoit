@@ -6,24 +6,23 @@ exports.signup = function(req, res, next) {
 	const name = req.body.name;
 	const password = req.body.password;
 
+	if (!name || !password) {
+		console.log("error: 'You must provide email and password'")
+		return res.status(422).send({ error: 'You must provide email and password' })
+	}
+
 	console.log("Requesting user data");
 
 	return User.create({
-		name: name,
-		password: password
-	}).then(() => console.log('Success!'))
+			name: name,
+			password: password
+		})
+		.then(() => {
+			console.log('User created')
+			res.json({ success: true })
+		})
 		.catch((err) => console.log('Username already exists'))
 
-	// return User.findOne({
-	// 	where: {
-	// 		name: 'bryankle'
-	// 	}
-	// }).then(function(res) {
-	// 	// If user already exists
-	// 	if (res) console.log('User already exists')
-	// 	// If user does not exist
-	// 	else console.log("Creating new user")
-	// })
 
 	console.log("The name you entered was:", name);
 	console.log("The password you entered was:", password);
