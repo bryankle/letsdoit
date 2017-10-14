@@ -9,13 +9,15 @@ class SigninForm extends Component {
     super()
   }
   
-  handleFormSubmit({ name, password}) {
+  handleFormSubmit({ name, password }) {
     console.log('Handle form submit');
 
     console.log('Name', name);
     console.log('Password', password);
     console.log(this.props);
-    this.props.signinUser({name, password});
+    this.props.signinUser({name, password}, () => {
+      this.props.history.push('/')
+    });
   }
 
   renderInput({ label, ...field }) {

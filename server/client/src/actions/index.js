@@ -21,16 +21,21 @@ export const addTask = (task) => {
 
 const ROOT_URL = 'http://localhost:3001';
 
-export function signinUser({ name, password }) {
+export function signinUser({ name, password }, redirect) {
 	return function(dispatch) {
 		axios.post(`${ROOT_URL}/signin`, { name, password })
+			.then(response => {
+				// If the request is good
+				// - Update state to indicate user is authenticated
+				// - Save the JWT token
+				// - redirect tot he route '/feature' --> '/tasks'
+				redirect()
+			})
+			.catch()
 
 	// Submit username/password to the server
 
-	// If the request is good
-	// - Update state to indicate user is authenticated
-	// - Save the JWT token
-	// - redirect tot he route '/feature' --> '/tasks'
+	
 
 	// If request is bad
 	// - Show an error to the user
