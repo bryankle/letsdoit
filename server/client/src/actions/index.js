@@ -19,7 +19,7 @@ export const addTask = (task) => {
 	}
 }
 
-const ROOT_URL = 'http:localhost:3001';
+const ROOT_URL = 'http://localhost:3001';
 
 export function signinUser({ name, password }) {
 	return function(dispatch) {

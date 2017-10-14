@@ -15,7 +15,7 @@ class SigninForm extends Component {
     console.log('Name', name);
     console.log('Password', password);
     console.log(this.props);
-    this.props.signinUser(name, password);
+    this.props.signinUser({name, password});
   }
 
   renderInput({ label, ...field }) {

@@ -3,15 +3,15 @@ const path = require('path');
 const router = require('./routes');
 const morgan = require('morgan');
 const app = express();
-
 const db = require("./database/models").db;
-
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // app.use("/api", routes);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors());
 
 router(app);
 
