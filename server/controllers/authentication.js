@@ -12,6 +12,7 @@ function tokenForUser(user) {
 exports.signin = function(req, res, next) {
 	// User has already had their name and password authorized
 	// We just need to give them a token
+	console.log('User has successfully signed in')
 	res.send({ token: tokenForUser(req.user) })
 }
 

@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { reduxForm, Field } from 'redux-form';
+import * as actions from '../actions';
 
 class SigninForm extends Component {
   constructor() {
     super()
   }
   
-  handleFormSubmit(values) {
-    console.log('Handle form submit', values)
+  handleFormSubmit({ name, password}) {
+    console.log('Handle form submit');
+
+    console.log('Name', name);
+    console.log('Password', password);
+    this.props.signinUser(name, password);
   }
 
   renderInput({ label, ...field }) {
