@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class SigninForm extends Component {
@@ -13,6 +14,7 @@ class SigninForm extends Component {
 
     console.log('Name', name);
     console.log('Password', password);
+    console.log(this.props);
     this.props.signinUser(name, password);
   }
 
@@ -66,6 +68,6 @@ class SigninForm extends Component {
   }
 }
 
-export default reduxForm({form: 'signin'})(SigninForm)
+export default reduxForm({form: 'signin'})(connect(null, actions)(SigninForm))
 
 // export default SigninForm;
