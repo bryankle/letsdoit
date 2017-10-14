@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import TaskReducer from './TaskReducer';
+import taskReducer from './task_reducer';
+import authReducer from './auth_reducer';
 
 const rootReducer = combineReducers({ 
-	tasks: TaskReducer,
+	tasks: taskReducer,
+	auth: authReducer,
 	form
 })
 

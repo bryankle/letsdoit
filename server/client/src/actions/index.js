@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 	ADD_TASK,
 	DELETE_TASK,
-	LOAD_TASKS
+	LOAD_TASKS,
+	AUTH_USER
 } from './types';
 
 export const loadTasks = (tasks) => {
@@ -27,7 +28,9 @@ export function signinUser({ name, password }, redirect) {
 			.then(response => {
 				// If the request is good
 				// - Update state to indicate user is authenticated
+				dispatch({ type: AUTH_USER })
 				// - Save the JWT token
+				localStorage.setItem('token', response.data.token);
 				// - redirect tot he route '/feature' --> '/tasks'
 				redirect()
 			})
