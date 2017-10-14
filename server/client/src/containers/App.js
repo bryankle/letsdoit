@@ -9,10 +9,10 @@ import { loadTasks } from '../actions/index';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
-import Login from './Login';
-import Registration from './Registration';
+import Signup from './Signup';
 import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
+import Signin from './Signin';
 /*
 
 App
@@ -62,7 +62,9 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/" component={TodoContainer} />
+          <Route exact path="/" component={TodoContainer} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
         </Switch>
       </div>
 

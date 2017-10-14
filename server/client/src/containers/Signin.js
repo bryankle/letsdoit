@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { reduxForm } from 'redux-form';
 
 const SigninForm = () => (
   <div className='login-form'>
@@ -52,4 +53,9 @@ const SigninForm = () => (
   </div>
 )
 
-export default SigninForm
+export default reduxForm({
+  form: 'signin',
+  fields: ['email', 'password']
+})(SigninForm)
+
+// export default SigninForm;

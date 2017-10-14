@@ -41,24 +41,24 @@ class Todo extends Component {
         if (!this.state.loading) {
             return(
                 <div>
-                <Header />
-                <Grid centered columns={2}>
-                
-                    <Grid.Column>
-                {/* Move form to separate container? at later time */}
-                    <Form 
-                    onSubmit={this.handleSubmit}>
-                        <Input 
-                            value={this.state.input}
-                            onChange={this.handleInput} 
-                            onSubmit={this.handleSubmit}
-                            placeholder="Let's do something" />
-                    </Form>
-                    
-                    <ProgressBar />
-                    <Tasks />
-                    </Grid.Column>
-                </Grid>
+                    <Header />
+
+                    <Grid centered columns={2}>
+                        <Grid.Column>
+                    {/* Move form to separate container? at later time */}
+                        <Form 
+                        onSubmit={this.handleSubmit}>
+                            <Input 
+                                value={this.state.input}
+                                onChange={this.handleInput} 
+                                onSubmit={this.handleSubmit}
+                                placeholder="Let's do something" />
+                        </Form>
+                        
+                        <ProgressBar />
+                        <Tasks />
+                        </Grid.Column>
+                    </Grid>
                 </div>
             )
         }
