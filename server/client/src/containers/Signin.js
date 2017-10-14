@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-const LoginForm = () => (
+const SigninForm = () => (
   <div className='login-form'>
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
@@ -52,4 +52,4 @@ const LoginForm = () => (
   </div>
 )
 
-export default LoginForm
+export default SigninForm
