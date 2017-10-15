@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input } from 'semantic-ui-react';
-import { reduxForm, Field } from 'redux-form';
+import { reset, reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -15,10 +15,14 @@ class TaskForm extends Component {
 
     handleFormSubmit({ task }) {
         // Prevent empty task from being created
-        if (task !== undefined) {
+        if (task !== '') {
             this.props.addTask(task);
         }
     }
+
+    // handleInput(event) {
+    // 	this.setState({ inputValue: event.target.value })
+    // }
 
     renderInput({ label, input, meta: { touched, error } }) {
         return (
@@ -60,4 +64,11 @@ function mapStateToProps(state) {
   return { errorMessage: state.tasks.error }
 }
 
-export default reduxForm({form: 'taskform', validate})(connect(mapStateToProps, actions)(TaskForm))
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('taskform'));
+}
+
+export default reduxForm({
+    form: 'taskform', 
+    onSubmitSuccess: afterSubmit
+})(connect(mapStateToProps, actions)(TaskForm))

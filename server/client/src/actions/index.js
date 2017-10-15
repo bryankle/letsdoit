@@ -20,13 +20,14 @@ export function loadTasks() {
 	}
 }
 
-export const addTask = (task) => {
+export const addTask = (task, redirect) => {
 	return function(dispatch) {
 		axios.post(`${ROOT_URL}/tasks`, { task: task })
 			.then(response => {
 				console.log('Task is being added...');
 				console.log(response)
 				dispatch({ type: ADD_TASK, payload: task })
+				redirect();
 			})
 	}
 }
