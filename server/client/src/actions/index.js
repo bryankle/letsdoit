@@ -5,7 +5,8 @@ import {
 	LOAD_TASKS,
 	AUTH_USER,
 	UNAUTH_USER,
-	AUTH_ERROR
+	AUTH_ERROR,
+	FETCH_MESSAGE
 } from './types';
 
 export const loadTasks = (tasks) => {
@@ -72,3 +73,19 @@ export function signoutUser() {
 	localStorage.removeItem('token');
 	return { type: UNAUTH_USER }
 }
+
+// Change to fetchTasks later
+export function fetchMessage() {
+	return function(dispatch) {
+		axios.get(ROOT_URL, {
+			headers: { authorization: localStorage.getItem('token') }
+		})
+			.then(response => {
+				dispatch({
+					type: FETCH_MESSAGE,
+					payload: response.data.message
+				})
+			})
+	}
+}
+

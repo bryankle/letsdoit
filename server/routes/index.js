@@ -34,8 +34,8 @@ module.exports = function(app) {
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
 	app.get('/', requireAuth, function(req, res) {
-		console.log('auth success')
-		res.send({ 'hi': 'there' })
+		console.log('auth success see message')
+		res.send({ 'message': 'there' })
 	})
 
 

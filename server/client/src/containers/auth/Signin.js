@@ -8,7 +8,7 @@ class Signin extends Component {
   
   handleFormSubmit({ name, password }) {
     this.props.signinUser({name, password}, () => {
-      this.props.history.push('/')
+      this.props.history.push('/tasks')
     });
   }
 

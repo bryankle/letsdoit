@@ -16,6 +16,7 @@ import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
 import RequireAuth from './auth/require_auth'; // Higher Order Component to secure individual routes with authentication
 import Features from './Features';
+import Welcome from './Welcome';
 
 
 /*
@@ -65,7 +66,8 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path="/" component={TodoContainer} />
+          <Route exact path="/" component={Welcome} />
+          <Route path="/tasks" component={RequireAuth(TodoContainer)} />
           <Route path="/features" component={RequireAuth(Features)} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />

@@ -52,3 +52,7 @@ NOTES
 		- On signin/signup form component, signin/signp action in action/index.js will make async call to corresponding server route to verify user information with database
 	Secure routes
 		- Higher order component used RequireAuth
+
+	Index route - use for localstorage task holder
+	Authenticated API request - always include JWT token
+		Q - why does initial task load not require token?

@@ -8,7 +8,7 @@ class Signup extends Component {
 
   handleFormSubmit(formProps) {
     this.props.signupUser(formProps, () => {
-      this.props.history.push('/')
+      this.props.history.push('/tasks')
     });
   }
 
