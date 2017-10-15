@@ -4,6 +4,7 @@ import {
 	DELETE_TASK,
 	LOAD_TASKS,
 	AUTH_USER,
+	UNAUTH_USER,
 	AUTH_ERROR
 } from './types';
 
@@ -25,6 +26,7 @@ const ROOT_URL = 'http://localhost:3001';
 
 export function signinUser({ name, password }, redirect) {
 	return function(dispatch) {
+		// Submit username/password to the server
 		axios.post(`${ROOT_URL}/signin`, { name, password })
 			.then(response => {
 				// If the request is good
@@ -36,16 +38,11 @@ export function signinUser({ name, password }, redirect) {
 				// - redirect tot he route '/feature' --> '/tasks'
 				redirect()
 			})
+			// If request is bad
 			.catch(() => {
+				// - Show an error to the user
 				dispatch(authError('Bad Login Info'))
 			})
-
-	// Submit username/password to the server
-
-
-	// If request is bad
-	// - Show an error to the user
-
 	}
 }
 
@@ -54,4 +51,9 @@ export function authError(error) {
 		type: AUTH_ERROR,
 		payload: error
 	}
+}
+
+export function signoutUser() {
+	localStorage.removeItem('token');
+	return { type: UNAUTH_USER }
 }

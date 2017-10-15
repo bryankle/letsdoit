@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Signup from './auth/Signup';
 import Signin from './auth/Signin';
+import Signout from './auth/Signout';
 import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
 
@@ -64,6 +65,7 @@ class App extends Component {
           <Route exact path="/" component={TodoContainer} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
+          <Route path="/signout" component={Signout} />
         </Switch>
       </div>
 
