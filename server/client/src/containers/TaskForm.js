@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input } from 'semantic-ui-react';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -10,36 +11,53 @@ class TaskForm extends Component {
 		this.state = {
 			inputValue: ''
 		}
-
-		this.handleInput = this.handleInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleSubmit = function(event) {
-        console.log('Handling submission...');
-        event.preventDefault()
-        this.props.addTask(this.state.inputValue)
-        this.setState({ inputValue: '' });
+    handleFormSubmit({ task }) {
+        // Prevent empty task from being created
+        if (task !== undefined) {
+            this.props.addTask(task);
+        }
     }
 
-    handleInput(event) {
-    	this.setState({ inputValue: event.target.value })
+    renderInput({ label, input, meta: { touched, error } }) {
+        return (
+            <span>
+            <Input 
+                    placeholder="Let's do something"
+                    {...input} />
+            {touched && error && <span>{error}</span>}
+            </span>
+            )
     }
 
 	render() {
+
+        const { handleSubmit } = this.props;
+
         console.log("TASK FORM actions", this.props);
 		return(
 			<Form 
-            onSubmit={this.handleSubmit}>
-                <Input 
-                    value={this.state.inputValue}
-                    onChange={this.handleInput} 
-                    onSubmit={this.handleSubmit}
-                    placeholder="Let's do something" />
+            onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                <Field name="task" component={this.renderInput} label="Let's do something!" />
                 <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1>
             </Form>
 		)
 	}
 }
 
-export default connect(null, actions)(TaskForm)
+function validate(formProps) {
+  const errors = {};
+
+  if (!formProps.name) {
+    errors.name = 'Please enter a username';
+  }
+
+  return errors;
+}
+
+function mapStateToProps(state) {
+  return { errorMessage: state.tasks.error }
+}
+
+export default reduxForm({form: 'taskform', validate})(connect(mapStateToProps, actions)(TaskForm))
