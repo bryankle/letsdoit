@@ -37,7 +37,7 @@ class Tabs extends Component {
             allTasks.push(<br/>);
         })
         console.log(activeTasks)
-
+        console.log('authenticated', this.props.authenticated)
         return (
             <Tab panes={panes} renderActiveOnly={false} />
         )
@@ -46,7 +46,8 @@ class Tabs extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    authenticated: state.authenticated
   }
 }
 

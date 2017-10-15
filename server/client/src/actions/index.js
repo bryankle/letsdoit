@@ -29,6 +29,7 @@ export function signinUser({ name, password }, redirect) {
 			.then(response => {
 				// If the request is good
 				// - Update state to indicate user is authenticated
+				console.log("User has successfully signed in!!")
 				dispatch({ type: AUTH_USER })
 				// - Save the JWT token
 				localStorage.setItem('token', response.data.token);

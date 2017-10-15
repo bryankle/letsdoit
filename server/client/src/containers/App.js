@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { loadTasks } from '../actions/index';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
 import Signup from './Signup';
 import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
