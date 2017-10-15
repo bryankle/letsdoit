@@ -19,11 +19,6 @@ class Todo extends Component {
         this.setState({ input: e.target.value })
     }
 
-    // Replace in Redux
-    _addTask = function() {
-        let task = this.state.input;
-    }
-
     componentWillMount() {
         setTimeout(() => {
             this.setState({ loading: !this.state.loading })

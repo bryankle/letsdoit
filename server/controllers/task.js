@@ -12,7 +12,8 @@ exports.addtask = function(req, res, next) {
 		userId: 1
 	})
 	.then((task) => {
-		console.log(`Task: ${task} added`)
+		console.log(`Task: ${task} added`);
+		res.send(task)
 	})
 }
 

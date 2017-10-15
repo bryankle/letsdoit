@@ -17,6 +17,8 @@ class TaskForm extends Component {
         // Prevent empty task from being created
         if (task !== '') {
             this.props.addTask(task);
+            console.log('NEW REDUX STATE');
+            console.log(this.props)
         }
     }
 
@@ -39,7 +41,7 @@ class TaskForm extends Component {
 			<Form 
             onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 <Field name="task" component={this.renderInput} label="Let's do something!" />
-                <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1>
+                <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1> 
             </Form>
 		)
 	}
@@ -48,7 +50,10 @@ class TaskForm extends Component {
 
 
 function mapStateToProps(state) {
-  return { errorMessage: state.tasks.error }
+  return { 
+    errorMessage: state.tasks.error,
+    tasks: state.tasks
+    }
 }
 
 const afterSubmit = (result, dispatch) => {

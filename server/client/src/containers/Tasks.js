@@ -21,7 +21,7 @@ class Tabs extends Component {
                     { menuItem: 'All', pane: allTasks },
                 ]
 
-        userTasks.forEach((task) => {
+        this.props.tasks.forEach((task) => {
             console.log(task)
             if (!task.completed) {
                 activeTasks.push(<TaskItem task={task.content} />)
