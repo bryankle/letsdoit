@@ -24,6 +24,15 @@ class Navbar extends Component {
     if (this.props.authenticated) {
       return (
           <Menu.Menu position='right'>
+            <Link to='/features'>
+              <Menu.Item
+                name='upcomingEvents'
+                onClick={this.handleItemClick}
+                >
+                Features
+              </Menu.Item>
+            </Link>
+
             <Link to='/signout'>
               <Menu.Item
                 name='upcomingEvents'

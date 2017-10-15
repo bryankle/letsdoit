@@ -14,6 +14,9 @@ import Signin from './auth/Signin';
 import Signout from './auth/Signout';
 import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
+import RequireAuth from './auth/require_auth'; // Higher Order Component to secure individual routes with authentication
+import Features from './Features';
+
 
 /*
 
@@ -63,6 +66,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={TodoContainer} />
+          <Route path="/features" component={RequireAuth(Features)} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
           <Route path="/signout" component={Signout} />

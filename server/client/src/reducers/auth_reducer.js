@@ -8,10 +8,10 @@ export default function(state = {}, action) {
 	switch(action.type) {
 		case AUTH_USER:
 			console.log("AUTH USER")
-			return {...state, authenticated: true};
+			return {...state, error: '', authenticated: true};
 		case UNAUTH_USER:
 			console.log("UNAUTH_USER")
-			return {...state, authenticated: false};
+			return {...state, error: '', authenticated: false};
 		case AUTH_ERROR:
 			console.log("AUTH_ERROR")
 			return {...state, error: action.payload }

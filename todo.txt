@@ -45,3 +45,8 @@ Question
 	4. Perform GET request for user tasks through /api/user/:userId/tasks
 
 
+NOTES
+	Error handling
+		- Begin at signin/signup route in routes/index.js with POST data going through controllers/authentication.js 
+		- Error handling conditions triggered in controllers/authentication
+		- On signin/signup form component, signin/signp action in action/index.js will make async call to corresponding server route to verify user information with database
