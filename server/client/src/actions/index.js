@@ -46,6 +46,28 @@ export function signinUser({ name, password }, redirect) {
 	}
 }
 
+export function signupUser({ name, password }, redirect) {
+	return function(dispatch) {
+		// Submit username/password to the server
+		axios.post(`${ROOT_URL}/signup`, { name, password })
+			// .then(response => {
+			// 	// If the request is good
+			// 	// - Update state to indicate user is authenticated
+			// 	console.log("User has successfully signed in")
+			// 	dispatch({ type: AUTH_USER })
+			// 	// - Save the JWT token
+			// 	localStorage.setItem('token', response.data.token);
+			// 	// - redirect tot he route '/feature' --> '/tasks'
+			// 	redirect()
+			// })
+			// // If request is bad
+			// .catch(() => {
+			// 	// - Show an error to the user
+			// 	dispatch(authError('Bad Login Info'))
+			// })
+	}
+}
+
 export function authError(error) {
 	return {
 		type: AUTH_ERROR,

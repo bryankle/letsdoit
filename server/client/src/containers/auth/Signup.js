@@ -6,19 +6,22 @@ import * as actions from '../../actions';
 
 class Signup extends Component {
 
-  handleFormSubmit() {
-
+  handleFormSubmit(formProps) {
+    this.props.signupUser(formProps);
   }
 
-  renderInput({ label, ...field }) {
+  renderInput({ label, input, meta: { touched, error } }) {
     return (
-       <Form.Input
-                { ...field.input }
+      <span>
+         <Form.Input
                 fluid
                 icon={ label === 'Username' ? 'user' : 'lock'}
                 iconPosition='left'
                 placeholder= { label }
+                {...input}
               />
+              { touched && error && <span>{error}</span> }
+      </span>
       )
   }
 
@@ -50,7 +53,9 @@ class Signup extends Component {
               <Image src='/logo.png' />
               {' '}Register an account
             </Header>
-            <Form size='large'>
+            <Form 
+              onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}
+              size='large'>
               <Segment stacked>
                 <Field name="name" component={this.renderInput} label="Username" />
                 <Field name="password" component={this.renderInput} label="Password" />
@@ -69,9 +74,23 @@ class Signup extends Component {
 function validate(formProps) {
   const errors = {};
 
-  console.log(formProps);
+  if (!formProps.name) {
+    errors.name = 'Please enter a username';
+  }
 
-  return errors
+  if (!formProps.password) {
+    errors.password = 'Please enter a password';
+  }
+
+  if (!formProps.passwordConfirm) {
+    errors.passwordConfirm = 'Please enter a password confirmation';
+  }
+
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Password must match';
+  }
+
+  return errors;
 }
 
 function mapStateToProps(state) {
