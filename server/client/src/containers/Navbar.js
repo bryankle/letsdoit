@@ -60,12 +60,14 @@ class Navbar extends Component {
     console.log(this.props);
     return (
       <Menu>
-        <Menu.Item
-          name='editorials'
-          onClick={this.handleItemClick}
-        >
-          Letsdoit
-        </Menu.Item>
+        <Link to="/">
+          <Menu.Item
+            name='editorials'
+            onClick={this.handleItemClick}
+            >
+            Letsdoit
+          </Menu.Item>
+        </Link>
 
         {this.renderUserAuth()}
       </Menu>

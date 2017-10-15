@@ -45,14 +45,12 @@ class App extends Component {
       .then(res => {
         console.log('res', res)
         this.props.loadTasks(res.data) // Redux action, required
-        // this.setState({ data: res.data })
       })
-      .then(() => console.log('this.props', this.props))
 
-    axios.post('/signup', {
-      "name": 'lol',
-      "password": "test"
-    })
+    // axios.post('/signup', {
+    //   "name": 'lol',
+    //   "password": "test"
+    // })
   }
 
   render() {
