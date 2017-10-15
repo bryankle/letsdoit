@@ -46,17 +46,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    // axios.get('/api')
-    //   // .then(data => this.props.loadTasks(data))
-    //   .then(res => {
-    //     console.log('res', res)
-    //     this.props.loadTasks(res.data) // Redux action, required
-    //   })
       this.props.loadTasks();
-    // axios.post('/signup', {
-    //   "name": 'lol',
-    //   "password": "test"
-    // })
   }
 
   render() {

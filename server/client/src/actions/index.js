@@ -10,18 +10,9 @@ import {
 } from './types';
 const ROOT_URL = 'http://localhost:3001';
 
-
-// export const loadTasks = (tasks) => {
-// 	return {
-// 		type: LOAD_TASKS,
-// 		payload: tasks
-// 	}
-// }
-
 export function loadTasks() {
 	return function(dispatch) {
 		axios.get('/api')
-      // .then(data => this.props.loadTasks(data))
       .then(res => {
         console.log('res', res)
         dispatch({ type: LOAD_TASKS, payload: res.data })
@@ -30,18 +21,13 @@ export function loadTasks() {
 }
 
 export const addTask = (task) => {
-	
 	return function(dispatch) {
 		axios.post(`${ROOT_URL}/task`, { content: task })
 			.then(response => {
 				console.log('Task is being added...');
-				dispatch({ type: ADD_TASK })
+				dispatch({ type: ADD_TASK, payload: task })
 			})
 	}
-	// return {
-	// 	type: ADD_TASK,
-	// 	payload: task
-	// }
 }
 
 
