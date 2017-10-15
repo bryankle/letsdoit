@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class SigninForm extends Component {
-  constructor() {
-    super()
-  }
   
   handleFormSubmit({ name, password }) {
     console.log('Handle form submit');
