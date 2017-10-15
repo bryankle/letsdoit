@@ -27,11 +27,13 @@ class Signup extends Component {
       )
   }
 
+  // Error handling message render
+  // Handled by PostgreSQL unique
   renderAlert() {
     if (this.props.errorMessage) {
       return (
         <div>
-          <strong>ERROR!!!</strong>
+          <strong>Oops, {this.props.errorMessage}</strong>
         </div>
         )
     }

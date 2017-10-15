@@ -36,6 +36,6 @@ exports.signup = function(req, res, next) {
 			console.log('User created')
 			res.json({ token: tokenForUser(user) })
 		})
-		.catch((err) => console.log('Username already exists'))
+		.catch((err) => res.status(422).send({ error: 'That username is has already been taken!' }))
 
 }

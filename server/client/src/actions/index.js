@@ -57,10 +57,7 @@ export function signupUser({ name, password }, redirect) {
 				redirect()
 			})
 			// If request is bad
-			.catch((response) => {
-				// - Show an error to the user
-				dispatch(authError('response.data.error'))
-			})
+			.catch( error => dispatch(authError( error.response.data.error)));
 	}
 }
 
