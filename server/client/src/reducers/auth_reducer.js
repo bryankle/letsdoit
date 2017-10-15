@@ -8,7 +8,7 @@ export default function(state = {}, action) {
 	switch(action.type) {
 		case AUTH_USER:
 			console.log("AUTH USER")
-			return {...state, authenticated: 'lol'};
+			return {...state, authenticated: true};
 		case UNAUTH_USER:
 			console.log("UNAUTH_USER")
 			return {...state, authenticated: false};

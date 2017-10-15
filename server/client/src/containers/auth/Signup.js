@@ -7,7 +7,9 @@ import * as actions from '../../actions';
 class Signup extends Component {
 
   handleFormSubmit(formProps) {
-    this.props.signupUser(formProps);
+    this.props.signupUser(formProps, () => {
+      this.props.history.push('/')
+    });
   }
 
   renderInput({ label, input, meta: { touched, error } }) {
@@ -24,6 +26,18 @@ class Signup extends Component {
       </span>
       )
   }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          
+          <strong>ERROR!!!</strong>
+        </div>
+        )
+    }
+  }
+
 
   render() {
 
@@ -60,6 +74,7 @@ class Signup extends Component {
                 <Field name="name" component={this.renderInput} label="Username" />
                 <Field name="password" component={this.renderInput} label="Password" />
                 <Field name="passwordConfirm" component={this.renderInput} label="Confirm Password" />
+                {this.renderAlert()}
                 <Button color='teal' fluid size='large'>Register</Button>
               </Segment>
             </Form>
