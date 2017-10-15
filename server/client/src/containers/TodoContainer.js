@@ -4,6 +4,7 @@ import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
+import TaskForm from './TaskForm';
 
 class Todo extends Component {
     constructor(props) {
@@ -45,15 +46,8 @@ class Todo extends Component {
 
                     <Grid centered columns={2}>
                         <Grid.Column>
-                    {/* Move form to separate container? at later time */}
-                        <Form 
-                        onSubmit={this.handleSubmit}>
-                            <Input 
-                                value={this.state.input}
-                                onChange={this.handleInput} 
-                                onSubmit={this.handleSubmit}
-                                placeholder="Let's do something" />
-                        </Form>
+                        {/* Move form to separate container? at later time */}
+                        <TaskForm />
                         
                         <ProgressBar />
                         <Tasks />
