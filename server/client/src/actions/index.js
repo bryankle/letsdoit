@@ -8,22 +8,42 @@ import {
 	AUTH_ERROR,
 	FETCH_MESSAGE
 } from './types';
+const ROOT_URL = 'http://localhost:3001';
 
-export const loadTasks = (tasks) => {
-	return {
-		type: LOAD_TASKS,
-		payload: tasks
+
+// export const loadTasks = (tasks) => {
+// 	return {
+// 		type: LOAD_TASKS,
+// 		payload: tasks
+// 	}
+// }
+
+export function loadTasks() {
+	return function(dispatch) {
+		axios.get('/api')
+      // .then(data => this.props.loadTasks(data))
+      .then(res => {
+        console.log('res', res)
+        dispatch({ type: LOAD_TASKS, payload: res.data })
+      })
 	}
 }
 
 export const addTask = (task) => {
-	return {
-		type: ADD_TASK,
-		payload: task
+	
+	return function(dispatch) {
+		axios.post(`${ROOT_URL}/task`, { content: task })
+			.then(response => {
+				console.log('Task is being added...');
+				dispatch({ type: ADD_TASK })
+			})
 	}
+	// return {
+	// 	type: ADD_TASK,
+	// 	payload: task
+	// }
 }
 
-const ROOT_URL = 'http://localhost:3001';
 
 export function signinUser({ name, password }, redirect) {
 	return function(dispatch) {

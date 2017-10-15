@@ -4,7 +4,7 @@ const express = require('express');
 // const User = require('../database/models/').User;
 const Task = require('../database/models/').Task 
 
-
+const TaskController = require('../controllers/task')
 const Authentication = require('../controllers/authentication');
 const passportService = require('../services/passport');
 const passport = require('passport');
@@ -13,7 +13,6 @@ const requireAuth = passport.authenticate('jwt', { session: false }); //prevents
 const requireSignin = passport.authenticate('local', { session: false });
 // Task seed data
 const testJson = require('../test.json');
-
 
 // Will work differently when implementing user login function
 // Will not grab user task data until login is successful
@@ -34,9 +33,8 @@ module.exports = function(app) {
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
 	app.get('/', requireAuth, function(req, res) {
-		console.log('auth success see message')
-		res.send({ 'message': 'there' })
+		console.log('auth success')
+		res.send({ 'hi': 'there' })
 	})
-
-
+	app.post('/tasks', TaskController.addtask);
 }
