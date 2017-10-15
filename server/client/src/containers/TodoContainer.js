@@ -11,7 +11,8 @@ class Todo extends Component {
         super(props)
         this.state = {
             input: '',
-            loading: true
+            loading: true,
+            touch: false
         }
     }
 
@@ -21,13 +22,13 @@ class Todo extends Component {
 
     componentWillMount() {
         setTimeout(() => {
-            this.setState({ loading: !this.state.loading })
+            this.setState({ loading: false })
         }, 1000)
     }
 
     render() {
-        console.log('this.props')
-        console.log(this.props)
+        console.log('this.state')
+        console.log(this.state)
         if (!this.state.loading) {
             return(
                 <div>
@@ -48,6 +49,7 @@ class Todo extends Component {
         else {
             return (
                 <Loading />
+
             ) 
         }
     }

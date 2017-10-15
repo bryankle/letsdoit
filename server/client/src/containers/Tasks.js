@@ -12,6 +12,7 @@ class Tabs extends Component {
     render() {
         console.log('USER TASKS RENDERING')
         const userTasks = this.props.tasks;
+        console.log('userTasks', userTasks)
         let activeTasks = [];
         let completedTasks = [];
         let allTasks = [];
