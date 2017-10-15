@@ -45,6 +45,12 @@ class TaskForm extends Component {
 	}
 }
 
+
+
+function mapStateToProps(state) {
+  return { errorMessage: state.tasks.error }
+}
+
 const afterSubmit = (result, dispatch) => {
     dispatch(reset('taskform'));
 }
