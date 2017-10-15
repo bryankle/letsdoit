@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
     Button,
     Container,
@@ -35,17 +36,19 @@ class Navbar extends Component {
     else {
       return (
           <Menu.Menu position='right'>
+            <Link to='/signin'>
+              <Menu.Item
+                name='upcomingEvents'
+                onClick={this.handleItemClick}
+                >
+                Sign In
+              </Menu.Item>
+            </Link>
             <Menu.Item
             name='upcomingEvents'
             onClick={this.handleItemClick}
             >
             Sign Up
-            </Menu.Item>
-            <Menu.Item
-            name='upcomingEvents'
-            onClick={this.handleItemClick}
-            >
-            Sign In
             </Menu.Item>
           </Menu.Menu>
         )
