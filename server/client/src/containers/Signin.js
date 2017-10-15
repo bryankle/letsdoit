@@ -32,6 +32,17 @@ class SigninForm extends Component {
       )
   }
 
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          
+          <strong>ERROR!!!</strong>
+        </div>
+        )
+    }
+  }
+
   render() {
     console.log(this.props);
  
@@ -56,6 +67,9 @@ class SigninForm extends Component {
             <Segment stacked>
               <Field name="name" component={this.renderInput} label="Username" />
               <Field name="password" component={this.renderInput} label="Password" />
+              
+              {this.renderAlert()}
+
               <Button color='teal' fluid size='large'>Login</Button>
             </Segment>
           </Form>
@@ -70,6 +84,10 @@ class SigninForm extends Component {
   }
 }
 
-export default reduxForm({form: 'signin'})(connect(null, actions)(SigninForm))
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error }
+}
+
+export default reduxForm({form: 'signin'})(connect(mapStateToProps, actions)(SigninForm))
 
 // export default SigninForm;

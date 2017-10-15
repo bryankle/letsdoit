@@ -41,7 +41,6 @@ export function signinUser({ name, password }, redirect) {
 
 	// Submit username/password to the server
 
-	
 
 	// If request is bad
 	// - Show an error to the user
