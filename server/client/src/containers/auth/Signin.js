@@ -4,14 +4,9 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-class SigninForm extends Component {
+class Signin extends Component {
   
   handleFormSubmit({ name, password }) {
-    console.log('Handle form submit');
-
-    console.log('Name', name);
-    console.log('Password', password);
-    console.log(this.props);
     this.props.signinUser({name, password}, () => {
       this.props.history.push('/')
     });
@@ -85,6 +80,6 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error }
 }
 
-export default reduxForm({form: 'signin'})(connect(mapStateToProps, actions)(SigninForm))
+export default reduxForm({form: 'signin'})(connect(mapStateToProps, actions)(Signin))
 
 // export default SigninForm;
