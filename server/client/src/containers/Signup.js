@@ -31,7 +31,7 @@ const Signup = () => (
               fluid
               icon='user'
               iconPosition='left'
-              placeholder='E-mail address'
+              placeholder='Username'
             />
             <Form.Input
               fluid

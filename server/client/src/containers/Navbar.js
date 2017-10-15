@@ -44,12 +44,14 @@ class Navbar extends Component {
                 Sign In
               </Menu.Item>
             </Link>
-            <Menu.Item
-            name='upcomingEvents'
-            onClick={this.handleItemClick}
-            >
-            Sign Up
-            </Menu.Item>
+            <Link to='/signup'>
+              <Menu.Item
+                name='upcomingEvents'
+                onClick={this.handleItemClick}
+                >
+                Sign Up
+              </Menu.Item>
+            </Link>
           </Menu.Menu>
         )
     }
