@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class TaskForm extends Component {
 
@@ -16,7 +18,8 @@ class TaskForm extends Component {
 	handleSubmit = function(event) {
         console.log('Handling submission...');
         event.preventDefault()
-        this.setState({ inputValue: '' })
+        this.props.addTask(this.state.inputValue)
+        this.setState({ inputValue: '' });
     }
 
     handleInput(event) {
@@ -24,6 +27,7 @@ class TaskForm extends Component {
     }
 
 	render() {
+        console.log("TASK FORM actions", this.props);
 		return(
 			<Form 
             onSubmit={this.handleSubmit}>
@@ -38,4 +42,4 @@ class TaskForm extends Component {
 	}
 }
 
-export default TaskForm;
+export default connect(null, actions)(TaskForm)

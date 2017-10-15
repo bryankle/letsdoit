@@ -12,7 +12,7 @@ export default(state = {}, action) => {
 			return action.payload // Loads users tasks into state
 		case ADD_TASK:
 			console.log("ADD_TASK");
-			// return {...state, tasks.concat(action.payload) }
+			return {...state, tasks: state.tasks.concat(action.payload) }
 		default:
 			console.log("Default reducer");
 			return state

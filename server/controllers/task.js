@@ -1,4 +1,4 @@
-const Tasks = require('../database/models/task');
+const Task = require('../database/models/task');
 
 
 exports.addtask = function(req, res, next) {
