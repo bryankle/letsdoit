@@ -8,7 +8,20 @@ class TaskForm extends Component {
 		this.state = {
 			inputValue: ''
 		}
+
+		this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
+	handleSubmit = function(event) {
+        console.log('Handling submission...');
+        event.preventDefault()
+        this.setState({ inputValue: '' })
+    }
+
+    handleInput(event) {
+    	this.setState({ inputValue: event.target.value })
+    }
 
 	render() {
 		return(
@@ -19,6 +32,7 @@ class TaskForm extends Component {
                     onChange={this.handleInput} 
                     onSubmit={this.handleSubmit}
                     placeholder="Let's do something" />
+                <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1>
             </Form>
 		)
 	}

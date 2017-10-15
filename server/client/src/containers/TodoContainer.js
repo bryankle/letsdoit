@@ -13,18 +13,12 @@ class Todo extends Component {
             input: '',
             loading: true
         }
-        this.handleInput = this.handleInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput = function(e) {
         this.setState({ input: e.target.value })
     }
 
-    handleSubmit = function() {
-        console.log('Handling submission...');
-        this.setState({ input: '' })
-    }
     // Replace in Redux
     _addTask = function() {
         let task = this.state.input;
