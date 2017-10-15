@@ -50,3 +50,5 @@ NOTES
 		- Begin at signin/signup route in routes/index.js with POST data going through controllers/authentication.js 
 		- Error handling conditions triggered in controllers/authentication
 		- On signin/signup form component, signin/signp action in action/index.js will make async call to corresponding server route to verify user information with database
+	Secure routes
+		- Higher order component used RequireAuth
