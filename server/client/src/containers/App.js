@@ -9,10 +9,11 @@ import { loadTasks } from '../actions/index';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './Navbar';
-import Signup from './Signup';
+import Signup from './auth/Signup';
+import Signin from './auth/Signin';
 import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
-import Signin from './Signin';
+
 /*
 
 App
