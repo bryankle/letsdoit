@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tab, Checkbox } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 import TaskItem from '../components/TaskItem';
 
 import { connect } from 'react-redux';
@@ -10,10 +10,8 @@ import { connect } from 'react-redux';
 class Tabs extends Component {
 
     render() {
-
-        // this.props.allTasks passed down by 
+        console.log('USER TASKS RENDERING')
         const userTasks = this.props.tasks;
-        console.log('userTasks', userTasks)
         let activeTasks = [];
         let completedTasks = [];
         let allTasks = [];

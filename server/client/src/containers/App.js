@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
 import './App.css';
-import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -12,7 +10,6 @@ import Navbar from './Navbar';
 import Signup from './auth/Signup';
 import Signin from './auth/Signin';
 import Signout from './auth/Signout';
-import Header from '../components/Header';
 import TodoContainer from './TodoContainer';
 import RequireAuth from './auth/require_auth'; // Higher Order Component to secure individual routes with authentication
 import Features from './Features';

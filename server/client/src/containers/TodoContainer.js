@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Input, Form } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
 import Header from '../components/Header';

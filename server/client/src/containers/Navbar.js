@@ -2,17 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-    Button,
-    Container,
-    Divider,
-    Grid,
-    Icon,
-    Image,
-    List,
     Menu,
-    Segment,
-    Visibility,
-    Dropdown
   } from 'semantic-ui-react'
 
 class Navbar extends Component {
