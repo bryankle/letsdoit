@@ -28,8 +28,7 @@ class Signin extends Component {
     if (this.props.errorMessage) {
       return (
         <div>
-          
-          <strong>ERROR!!!</strong>
+          <strong>{this.props.errorMessage}</strong>
         </div>
         )
     }

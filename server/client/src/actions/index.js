@@ -41,7 +41,7 @@ export function signinUser({ name, password }, redirect) {
 			// If request is bad
 			.catch(() => {
 				// - Show an error to the user
-				// dispatch(authError('Bad Login Info'))
+				dispatch(authError('Bad Login Info'))
 			})
 	}
 }
@@ -59,7 +59,7 @@ export function signupUser({ name, password }, redirect) {
 			// If request is bad
 			.catch((response) => {
 				// - Show an error to the user
-				// dispatch(authError('response.data.error'))
+				dispatch(authError('response.data.error'))
 			})
 	}
 }

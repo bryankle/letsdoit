@@ -31,7 +31,6 @@ class Signup extends Component {
     if (this.props.errorMessage) {
       return (
         <div>
-          
           <strong>ERROR!!!</strong>
         </div>
         )
