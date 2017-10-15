@@ -20,17 +20,12 @@ class TaskForm extends Component {
         }
     }
 
-    // handleInput(event) {
-    // 	this.setState({ inputValue: event.target.value })
-    // }
-
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <span>
             <Input 
-                    placeholder="Let's do something"
-                    {...input} />
-            {touched && error && <span>{error}</span>}
+                placeholder="Let's do something"
+                {...input} />
             </span>
             )
     }
@@ -48,20 +43,6 @@ class TaskForm extends Component {
             </Form>
 		)
 	}
-}
-
-function validate(formProps) {
-  const errors = {};
-
-  if (!formProps.name) {
-    errors.name = 'Please enter a username';
-  }
-
-  return errors;
-}
-
-function mapStateToProps(state) {
-  return { errorMessage: state.tasks.error }
 }
 
 const afterSubmit = (result, dispatch) => {
