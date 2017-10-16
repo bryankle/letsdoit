@@ -23,5 +23,4 @@ exports.addtask = (req, res, next) => {
 			res.send(task)
 		})
 	})
-
 }
