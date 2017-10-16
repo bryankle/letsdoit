@@ -6,7 +6,9 @@ import {
 	AUTH_USER,
 	UNAUTH_USER,
 	AUTH_ERROR,
-	FETCH_MESSAGE
+	FETCH_MESSAGE,
+	LOADING,
+	NOT_LOADING
 } from './types';
 const ROOT_URL = 'http://localhost:3001';
 
@@ -28,6 +30,18 @@ export const addTask = (task, redirect) => {
 				console.log(res)
 				dispatch({ type: ADD_TASK, payload: res.data })
 			})
+	}
+}
+
+export function loadingBegin() {
+	return {
+		type: LOADING
+	}
+}
+
+export function loadingComplete() {
+	return {
+		type: NOT_LOADING
 	}
 }
 

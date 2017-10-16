@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import { Grid } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
@@ -22,14 +24,14 @@ class Todo extends Component {
 
     componentWillMount() {
         setTimeout(() => {
-            this.setState({ loading: false })
+            this.props.loadingComplete();
         }, 1000)
     }
 
     render() {
-        console.log('this.state')
-        console.log(this.state)
-        if (!this.state.loading) {
+        console.log('this.props')
+        console.log(this.props)
+        if (!this.props.loading.status) {
             return(
                 <div>
                     <Header />
@@ -55,4 +57,8 @@ class Todo extends Component {
     }
 }
 
-export default Todo;
+function mapStateToProps(state) {
+    return { loading: state.loading } 
+}
+
+export default connect(mapStateToProps, actions)(Todo);
