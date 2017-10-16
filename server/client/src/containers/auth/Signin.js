@@ -35,6 +35,7 @@ class Signin extends Component {
   }
 
   render() {
+    console.log("SIGNIN")
     console.log(this.props);
  
     const { handleSubmit } = this.props;
@@ -76,7 +77,7 @@ class Signin extends Component {
 }
 
 function mapStateToProps(state) {
-  return { errorMessage: state.auth.error }
+  return { user: state.auth.user,errorMessage: state.auth.error }
 }
 
 export default reduxForm({form: 'signin'})(connect(mapStateToProps, actions)(Signin))

@@ -1,7 +1,4 @@
 const express = require('express');
-
-// move tpo controllr
-// const User = require('../database/models/').User;
 const Task = require('../database/models/').Task 
 
 const TaskController = require('../controllers/task')
@@ -21,6 +18,7 @@ const testJson = require('../test.json');
 
 module.exports = function(app) {
 
+	// Remove after correlating tasks to user
 	app.get('/api', function(req, res) {
 	console.log("Connected to API");
 	Task.findAll()
