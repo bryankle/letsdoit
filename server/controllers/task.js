@@ -1,20 +1,43 @@
 const Task = require('../database/models/task');
+const User = require('../database/models/User');
 
-
-exports.addtask = function(req, res, next) {
+exports.addtask = (req, res, next) => {
 
 	const task = req.body.task;
-	const userId = '?';
+	const user = req.body.user;
+	const userId = 1;
+	// Find userID given username
+	return User.findOne({
+		where: {
+			name: user
+		}
+	}).then((user) => {
+		console.log('Creating a new task with this ID')
+		console.log(user.dataValues.id);
+		console.log(this);
+		return Task.create({
+			content: task,
+			completed: false,
+			userId: user.dataValues.id
+		})
+		.then((task) => {
+			console.log(`Task: ${task} added`);
+			res.send(task)
+		})
+	})
 
-	return Task.create({
-		content: task,
-		completed: false,
-		userId: 1
-	})
-	.then((task) => {
-		console.log(`Task: ${task} added`);
-		res.send(task)
-	})
+	// Assign task parentID (userID) this ID
+
+
+	// return Task.create({
+	// 	content: task,
+	// 	completed: false,
+	// 	userId: userId
+	// })
+	// .then((task) => {
+	// 	console.log(`Task: ${task} added`);
+	// 	res.send(task)
+	// })
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'

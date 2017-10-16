@@ -16,7 +16,7 @@ class TaskForm extends Component {
     handleFormSubmit({ task }) {
         // Prevent empty task from being created
         if (task !== '') {
-            this.props.addTask(task);
+            this.props.addTask(task, this.props.user);
             console.log('NEW REDUX STATE');
             console.log(this.props)
         }
@@ -52,7 +52,8 @@ class TaskForm extends Component {
 function mapStateToProps(state) {
   return { 
     errorMessage: state.tasks.error,
-    tasks: state.tasks
+    tasks: state.tasks,
+    user: state.auth.user
     }
 }
 
