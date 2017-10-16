@@ -58,7 +58,10 @@ class Todo extends Component {
 }
 
 function mapStateToProps(state) {
-    return { loading: state.loading } 
+    return { 
+            loading: state.loading,
+            user: state.auth.user
+        } 
 }
 
 export default connect(mapStateToProps, actions)(Todo);

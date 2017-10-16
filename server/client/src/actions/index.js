@@ -53,11 +53,12 @@ export function signinUser({ name, password }, redirect) {
 			.then(response => {
 				// If the request is good
 				// - Update state to indicate user is authenticated
-				console.log("User has successfully signed in")
+				console.log("User has successfully signed in");
+				console.log("response", response)
 				dispatch({ 
 					type: AUTH_USER,
 					payload: name
-					 })
+					})
 				// - Save the JWT token
 				localStorage.setItem('token', response.data.token);
 				// - redirect tot he route '/feature' --> '/tasks'
