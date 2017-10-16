@@ -19,14 +19,7 @@ const testJson = require('../test.json');
 module.exports = function(app) {
 
 	// Remove after correlating tasks to user
-	app.get('/api', function(req, res) {
-	console.log("Connected to API");
-	Task.findAll()
-		.then((data) => {
-			console.log("Retrieving user tasks")
-		    res.json(data);
-		})
-	});
+	app.get('/api', TaskController.fetchTasks);
 
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);

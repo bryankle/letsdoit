@@ -24,3 +24,13 @@ exports.addtask = (req, res, next) => {
 		})
 	})
 }
+
+exports.fetchTasks = (req, res, next) => {
+
+	Task.findAll()
+		.then((data) => {
+			console.log("Retrieving user tasks")
+		    res.json(data);
+		})
+
+}
