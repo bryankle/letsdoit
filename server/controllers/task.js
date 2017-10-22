@@ -6,13 +6,16 @@ exports.addtask = (req, res, next) => {
 	const task = req.body.task;
 	const user = req.body.user;
 	const userId = 1;
-	// Find id of current logged user
+	// Find userID given username
 	return User.findOne({
 		where: {
 			name: user
 		}
-	// Use user id to associate newly created task
 	}).then((user) => {
+		console.log('Creating a new task with this ID')
+				console.log(user);
+
+		console.log(user.dataValues.id);
 		return Task.create({
 			content: task,
 			completed: false,
@@ -23,14 +26,16 @@ exports.addtask = (req, res, next) => {
 			res.send(task)
 		})
 	})
+
+	// Assign task parentID (userID) this ID
 }
 
-exports.fetchTasks = (req, res, next) => {
-
-	Task.findAll()
-		.then((data) => {
-			console.log("Retrieving user tasks")
-		    res.json(data);
-		})
+exports.completeTask = (req, res, next) => {
 
 }
+
+// Adjust task reducer to update Redux store to hold users states in 'tasks'
+
+// Check componentDidMount property to ensure that initially loaded tasks will upload tasks to store
+
+// Ensure rendered tasks are coming from store state

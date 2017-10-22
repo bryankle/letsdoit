@@ -1,8 +1,8 @@
 import {
   ADD_TASK,
   DELETE_TASK,
-  LOAD_TASKS
-
+  LOAD_TASKS,
+  COMPLETE_TASK
 } from '../actions/types';
 
 export default(state = {}, action) => {
@@ -15,6 +15,8 @@ export default(state = {}, action) => {
 			console.log(action.payload)
 			console.log('state', state)
 			return [...state, action.payload]
+		case COMPLETE_TASK:
+			return state;
 		default:
 			console.log("Default reducer");
 			return state

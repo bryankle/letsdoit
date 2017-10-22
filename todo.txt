@@ -13,7 +13,8 @@ LONG TERM GOALS
 - Team can see what tasks you have completed and tasks can be assigned to team members
 - 
 
-
+10/16
+- Where is passport serialize and deserialize inside this applicat.
 
 
 
