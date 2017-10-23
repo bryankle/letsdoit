@@ -1,7 +1,7 @@
 const express = require('express');
 const Task = require('../database/models/').Task 
 
-const TaskController = require('../controllers/task')
+const TaskController = require('../controllers/controller_task');
 const Authentication = require('../controllers/authentication');
 const passportService = require('../services/passport');
 const passport = require('passport');
@@ -19,14 +19,12 @@ const testJson = require('../test.json');
 module.exports = function(app) {
 
 	// Remove after correlating tasks to user
-	app.get('/api', function(req, res) {
-	console.log("Connected to API");
-	Task.findAll()
-		.then((data) => {
-			console.log("Retrieving user tasks")
-		    res.json(data);
-		})
-	});
+
+	// Replace this with a new route and controller
+
+
+	app.get('/api/tasks', TaskController.loadTask);
+	app.post('/api/tasks', TaskController.addtask);
 
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
@@ -34,5 +32,4 @@ module.exports = function(app) {
 		console.log('auth success')
 		res.send({ 'hi': 'there' })
 	})
-	app.post('/tasks', TaskController.addtask);
 }

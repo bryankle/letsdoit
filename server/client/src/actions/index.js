@@ -14,7 +14,7 @@ const ROOT_URL = 'http://localhost:3001';
 
 export function loadTasks() {
 	return function(dispatch) {
-		axios.get('/api')
+		axios.get(`${ROOT_URL}/api/tasks`)
       .then(res => {
         console.log('res', res)
         dispatch({ type: LOAD_TASKS, payload: res.data })
@@ -24,7 +24,7 @@ export function loadTasks() {
 
 export const addTask = (task, user) => {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/tasks`, { 
+		axios.post(`${ROOT_URL}/api/tasks`, { 
 				task: task, 
 				user: user 
 				}
