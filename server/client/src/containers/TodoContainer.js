@@ -23,9 +23,11 @@ class Todo extends Component {
     }
 
     componentWillMount() {
+        console.log('hello from todocontainer');
+        // this.props.loadTasks()
         setTimeout(() => {
             this.props.loadingComplete();
-        }, 1000)
+        }, 2000)
     }
 
     render() {

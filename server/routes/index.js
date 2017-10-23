@@ -23,7 +23,7 @@ module.exports = function(app) {
 	// Replace this with a new route and controller
 
 
-	app.get('/api/tasks', TaskController.loadTask);
+	app.get('/api/tasks/:user', TaskController.loadTask);
 	app.post('/api/tasks', TaskController.addtask);
 
 	app.post('/signin', requireSignin, Authentication.signin);

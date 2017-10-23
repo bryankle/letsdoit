@@ -5,11 +5,32 @@ const User = require('../database/models/User');
 // Pass in userId from req.body
 exports.loadTask = (req, res, next) => {
 	console.log("Connected to API");
-	Task.findAll()
-		.then((data) => {
-			console.log("Retrieving user tasks")
-		    res.json(data);
+	console.log('req.body', req.params);
+	const { user } = req.params;
+	User.findOne({ where: { name: user } })
+	.then(user => user.id)
+	.then(userId => {
+		Task.findAll({
+			where: { userId: userId }
 		})
+		.then(tasks => {
+			console.log('tasks', tasks);
+			console.log('userId', userId)
+			console.log("Retrieving user tasks")
+		    res.json(tasks);
+		})
+		.catch(err => res.send(err))
+	})
+	// Task.findAll({
+	// 	where: {
+	// 		name: user
+	// 	}
+	// })
+	// 	.then((data) => {
+	// 		console.log("Retrieving user tasks")
+	// 	    res.json(data);
+	// 	})
+	// 	.catch(err => res.send(err))
 }
 
 exports.addtask = (req, res, next) => {

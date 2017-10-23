@@ -13,9 +13,11 @@ import {
 const ROOT_URL = 'http://localhost:3001';
 
 // Find userId and pass into tasks 
-export function loadTasks() {
+export function loadTasks(user) {
+	console.log('loadTasks');
+	console.log(user);
 	return function(dispatch) {
-		axios.get(`${ROOT_URL}/api/tasks`)
+		axios.get(`${ROOT_URL}/api/tasks/${user}`)
       .then(res => {
         console.log('res', res)
         dispatch({ type: LOAD_TASKS, payload: res.data })
@@ -65,8 +67,9 @@ export function signinUser({ name, password }, redirect) {
 					type: AUTH_USER,
 					payload: name
 					})
-				// - Save the JWT token
+				// - Save the JWT tokenloca
 				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('user', name);
 				// - redirect tot he route '/feature' --> '/tasks'
 				redirect()
 			})

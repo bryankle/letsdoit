@@ -43,15 +43,16 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.props.loadTasks();
+    // For when user is already logged in to load tasks
+    localStorage.user ? this.props.loadTasks(localStorage.user) : '';
     console.log("componentDidMount")
-    console.log(this.props)
+    console.log(this.props);
+    console.log('localStorage', localStorage.user)
   }
 
   render() {
     return (
       <Router>
-
       <div className="App">
         <Navbar />
         <Switch>
