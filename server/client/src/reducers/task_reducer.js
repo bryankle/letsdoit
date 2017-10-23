@@ -17,7 +17,16 @@ export default(state = {}, action) => {
 			return [...state, action.payload]
 		case COMPLETE_TASK:
 			console.log("REDUCERS - COMPLETE_TASK")
-			return state;
+			console.log('action.payload', action.payload)
+			const { userId, taskId } = action.payload;
+			console.log('state', state)
+			var completedTask = state.find((task) => {
+				console.log(task.id, 'and', taskId)
+				return task.id === parseInt(taskId);
+			})
+			completedTask.completed = true;
+			console.log('completedTask', completedTask);
+			return [...state, completedTask]
 		default:
 			console.log("Default reducer");
 			return state

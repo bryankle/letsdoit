@@ -49,8 +49,6 @@ exports.addtask = (req, res, next) => {
 	// Assign task parentID (userID) this ID
 }
 
-
-
 exports.completeTask = (req, res, next) => {
 	console.log('CONTROLLER - completeTask');
 	console.log('req.params', req.params);
@@ -59,7 +57,7 @@ exports.completeTask = (req, res, next) => {
 		{ completed: true },
 		{ where: { id: taskId } }
 	)
-	.then(task => res.send(task))
+	.then(() => res.send({ userId, taskId }))
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'

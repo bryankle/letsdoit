@@ -46,6 +46,7 @@ export const completeTask = (userId, taskId) => {
 	return function(dispatch) {
 		axios.put(`${ROOT_URL}/api/user/${userId}/tasks/${taskId}`)
 			.then(res => {
+				console.log('ACTIONS - DISPATCHING COMPLETE_TASK')
 				dispatch({
 					type: COMPLETE_TASK,
 					payload: res.data

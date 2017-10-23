@@ -10,7 +10,8 @@ import * as actions from '../actions';
 class Tabs extends Component {
 
     render() {
-            console.log('USER TASKS RENDERING')
+            console.log('USER TASKS RENDERING');
+            console.log('this.props', this.props)
             const userTasks = this.props.tasks;
             console.log('userTasks', userTasks)
             let activeTasks = [];
@@ -51,7 +52,8 @@ class Tabs extends Component {
 function mapStateToProps(state) {
   return {
     tasks: state.tasks,
-    auth: state.auth
+    auth: state.auth,
+    test: state
   }
 }
 
