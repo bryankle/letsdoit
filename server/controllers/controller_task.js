@@ -1,6 +1,8 @@
 const Task = require('../database/models/task');
 const User = require('../database/models/User');
 
+
+// Pass in userId from req.body
 exports.loadTask = (req, res, next) => {
 	console.log("Connected to API");
 	Task.findAll()

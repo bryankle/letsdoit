@@ -2,7 +2,7 @@ const express = require('express');
 const Task = require('../database/models/').Task 
 
 const TaskController = require('../controllers/controller_task');
-const Authentication = require('../controllers/authentication');
+const Authentication = require('../controllers/controller_authentication');
 const passportService = require('../services/passport');
 const passport = require('passport');
 // Passport middleware
@@ -28,6 +28,8 @@ module.exports = function(app) {
 
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
+
+	// Test route
 	app.get('/', requireAuth, function(req, res) {
 		console.log('auth success')
 		res.send({ 'hi': 'there' })

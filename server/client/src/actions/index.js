@@ -12,6 +12,7 @@ import {
 } from './types';
 const ROOT_URL = 'http://localhost:3001';
 
+// Find userId and pass into tasks 
 export function loadTasks() {
 	return function(dispatch) {
 		axios.get(`${ROOT_URL}/api/tasks`)
@@ -88,7 +89,7 @@ export function signupUser({ name, password }, redirect) {
 				redirect()
 			})
 			// If request is bad
-			.catch( error => dispatch(authError( error.response.data.error)));
+			.catch( error => dispatch(authError(error.response.data.error)));
 	}
 }
 

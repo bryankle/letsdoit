@@ -43,7 +43,9 @@ class App extends Component {
 
 
   componentDidMount() {
-      this.props.loadTasks();
+    this.props.loadTasks();
+    console.log("componentDidMount")
+    console.log(this.props)
   }
 
   render() {
@@ -69,7 +71,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    auth: state.auth
   }
 }
 
