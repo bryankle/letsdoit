@@ -11,7 +11,7 @@ exports.loadTask = (req, res, next) => {
 	.then(user => user.id)
 	.then(userId => {
 		Task.findAll({
-			where: { userId: userId }
+			where: { userId }
 		})
 		.then(tasks => {
 			console.log('tasks', tasks);
@@ -21,21 +21,11 @@ exports.loadTask = (req, res, next) => {
 		})
 		.catch(err => res.send(err))
 	})
-	// Task.findAll({
-	// 	where: {
-	// 		name: user
-	// 	}
-	// })
-	// 	.then((data) => {
-	// 		console.log("Retrieving user tasks")
-	// 	    res.json(data);
-	// 	})
-	// 	.catch(err => res.send(err))
 }
 
 exports.addtask = (req, res, next) => {
 	const task = req.body.task;
-	const user = req.body.user;
+	const user = req.params.user;
 	const userId = 1;
 	// Find userID given username
 	return User.findOne({
@@ -62,7 +52,14 @@ exports.addtask = (req, res, next) => {
 
 
 exports.completeTask = (req, res, next) => {
-
+	console.log('CONTROLLER - completeTask');
+	console.log('req.params', req.params);
+	const { userId, taskId } = req.params;
+	Task.update(
+		{ completed: true },
+		{ where: { id: taskId } }
+	)
+	.then(task => res.send(task))
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'

@@ -16,6 +16,7 @@ export default(state = {}, action) => {
 			console.log('state', state)
 			return [...state, action.payload]
 		case COMPLETE_TASK:
+			console.log("REDUCERS - COMPLETE_TASK")
 			return state;
 		default:
 			console.log("Default reducer");

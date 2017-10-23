@@ -24,7 +24,8 @@ module.exports = function(app) {
 
 
 	app.get('/api/tasks/:user', TaskController.loadTask);
-	app.post('/api/tasks', TaskController.addtask);
+	app.post('/api/tasks/:user', TaskController.addtask);
+	app.put('/api/user/:userId/tasks/:taskId', TaskController.completeTask);
 
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);

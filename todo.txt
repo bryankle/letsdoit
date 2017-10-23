@@ -16,8 +16,7 @@ LONG TERM GOALS
 
 - Render correct tasks for user logged in
 - Separate tasks into different routes?
-
-
+- Issue: logging out user and logging into a different user leaves residual tasks from previous user unless page is refreshed
 
 
 10/16

@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
 	ADD_TASK,
 	DELETE_TASK,
+	COMPLETE_TASK,
 	LOAD_TASKS,
 	AUTH_USER,
 	UNAUTH_USER,
@@ -18,18 +19,17 @@ export function loadTasks(user) {
 	console.log(user);
 	return function(dispatch) {
 		axios.get(`${ROOT_URL}/api/tasks/${user}`)
-      .then(res => {
-        console.log('res', res)
-        dispatch({ type: LOAD_TASKS, payload: res.data })
-      })
+      	.then(res => {
+	        console.log('res', res)
+	        dispatch({ type: LOAD_TASKS, payload: res.data })
+	      })
 	}
 }
 
-export const addTask = (task, user) => {
+export const addTask = (user, task) => {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/api/tasks`, { 
-				task: task, 
-				user: user 
+		axios.post(`${ROOT_URL}/api/tasks/${user}`, { 
+				task: task
 				}
 			)
 			.then(res => {
@@ -37,6 +37,19 @@ export const addTask = (task, user) => {
 				console.log("Adding task", task);
 				console.log("User", user)
 				dispatch({ type: ADD_TASK, payload: res.data })
+			})
+	}
+}
+
+export const completeTask = (userId, taskId) => {
+	console.log("ACTIONS - completeTask")
+	return function(dispatch) {
+		axios.put(`${ROOT_URL}/api/user/${userId}/tasks/${taskId}`)
+			.then(res => {
+				dispatch({
+					type: COMPLETE_TASK,
+					payload: res.data
+				})
 			})
 	}
 }
@@ -66,15 +79,17 @@ export function signinUser({ name, password }, redirect) {
 				dispatch({ 
 					type: AUTH_USER,
 					payload: name
-					})
+					});
 				// - Save the JWT tokenloca
 				localStorage.setItem('token', response.data.token);
 				localStorage.setItem('user', name);
 				// - redirect tot he route '/feature' --> '/tasks'
+				// loadTasks(name).then(() =>)
+
 				redirect()
 			})
 			// If request is bad
-			.catch(() => {
+			.catch(err => {
 				// - Show an error to the user
 				dispatch(authError('Bad Login Info'))
 			})

@@ -25,9 +25,11 @@ class Todo extends Component {
     componentWillMount() {
         console.log('hello from todocontainer');
         // this.props.loadTasks()
+        console.log('this.props')
+
         setTimeout(() => {
             this.props.loadingComplete();
-        }, 2000)
+        }, 1000)
     }
 
     render() {
@@ -36,7 +38,7 @@ class Todo extends Component {
         if (!this.props.loading.status) {
             return(
                 <div>
-                    <Header />
+                    <Header/>
 
                     <Grid centered columns={2}>
                         <Grid.Column>

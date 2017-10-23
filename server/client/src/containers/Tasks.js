@@ -25,14 +25,19 @@ class Tabs extends Component {
             this.props.tasks.forEach((task) => {
                 console.log(task)
                 if (!task.completed) {
-                    activeTasks.push(<TaskItem task={task.content} />)
+                    activeTasks.push(<TaskItem 
+                        handleClick={() => {
+                            this.props.completeTask(task.userId, task.id) // userId, taskId
+                        }}
+                        task={task.content} />)
                     activeTasks.push(<br/>);
                 }
                 else {
                     completedTasks.push(<TaskItem task={task.content} />)
                     completedTasks.push(<br/>);
                 }
-                allTasks.push(<TaskItem task={task.content} />)
+                allTasks.push(<TaskItem 
+                        task={task.content} />)
                 allTasks.push(<br/>);
             })
             console.log(activeTasks)
