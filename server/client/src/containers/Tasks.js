@@ -17,32 +17,63 @@ class Tabs extends Component {
             let activeTasks = [];
             let completedTasks = [];
             let allTasks = [];
-            let panes = [
-                        { menuItem: 'Active', pane: activeTasks},
-                        { menuItem: 'Completed', pane: completedTasks },
-                        { menuItem: 'All', pane: allTasks },
-                    ]
 
             this.props.tasks.forEach((task) => {
-                console.log(task)
+
                 if (!task.completed) {
                     activeTasks.push(<TaskItem 
                         handleClick={() => {
+                            // Send to database task completion
                             this.props.completeTask(task.userId, task.id) // userId, taskId
                         }}
+                        // Render unchecked box for incompleted tasks
+                        completed={false}
                         task={task.content} />)
+                    // Beginning a checkbox on new line
                     activeTasks.push(<br/>);
                 }
+
                 else {
-                    completedTasks.push(<TaskItem task={task.content} />)
+                    completedTasks.push(
+                        <TaskItem 
+                            completed={true}
+                            task={task.content} />
+                        )
                     completedTasks.push(<br/>);
                 }
-                allTasks.push(<TaskItem 
-                        task={task.content} />)
-                allTasks.push(<br/>);
+
+                allTasks.push(
+                        <span>
+                            <TaskItem 
+                                completed={task.completed ? true : false}
+                                task={task.content} 
+                            />
+                            <br/>
+                        </span>
+                        )
             })
-            console.log(activeTasks)
-            console.log('authenticated', this.props.authenticated)
+            console.log('allTasks')
+            console.log(allTasks.forEach(function(val) {
+                console.log(val);
+            }))
+
+            // allTasks.filter(function(val) {
+            //     console.log('alltask filtering')
+            //     console.log(val.props.children[0].props.completed)
+            //     return val.props.children[0].props.completed === true
+            // })
+
+            let panes = [
+                        { menuItem: 'Active', pane: activeTasks},
+                        { menuItem: 'Completed', pane: completedTasks },
+                        { menuItem: 'All', pane: allTasks.sort(function(a, b) {
+                console.log('alltask filtering')
+                // console.log(val.props.children[0].props.completed)
+                // return val.props.children[0].props.completed !== true
+                return a.props.children[0].props.completed - b.props.children[0].props.completed
+            })},
+                    ]
+
             return (
                 <Tab panes={panes} renderActiveOnly={false} />
             )
