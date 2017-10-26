@@ -7,7 +7,10 @@ import * as actions from '../../actions';
 class Signin extends Component {
   
   handleFormSubmit({ name, password }) {
+    // Action creator
     this.props.signinUser({name, password}, () => {
+      console.log('handleFormSubmit')
+      this.props.loadTasks(name)
       this.props.history.push('/tasks')
     });
   }

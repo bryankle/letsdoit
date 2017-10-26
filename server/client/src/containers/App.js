@@ -34,7 +34,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {}
+      data: {},
+      currentUser: localStorage.user
     }
   }
   // Initial task fetching
@@ -44,7 +45,7 @@ class App extends Component {
 
   componentDidMount() {
     // For when user is already logged in to load tasks
-    this.props.auth.authenticated ? this.props.loadTasks(localStorage.user) : '';
+    this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
     console.log("componentDidMount")
     console.log(this.props);
     console.log('localStorage', localStorage.user)

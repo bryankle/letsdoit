@@ -13,7 +13,6 @@ class Todo extends Component {
         super(props)
         this.state = {
             input: '',
-            loading: true,
             touch: false
         }
     }
@@ -24,7 +23,7 @@ class Todo extends Component {
 
     componentWillMount() {
         console.log('hello from todocontainer');
-        // this.props.loadTasks()
+        // this.props.loadTasks(localStorage.user)
 
         setTimeout(() => {
             this.props.loadingComplete();
