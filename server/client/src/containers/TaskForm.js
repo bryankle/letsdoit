@@ -26,6 +26,8 @@ class TaskForm extends Component {
         return (
             <span>
             <Input 
+                style={{width: '100%'}}
+                size='massive'
                 placeholder="Let's do something"
                 {...input} />
             </span>
@@ -39,9 +41,11 @@ class TaskForm extends Component {
         console.log("TASK FORM actions", this.props);
 		return(
 			<Form 
-                size='massive'
                 onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                <Field name="task" component={this.renderInput} label="Let's do something!" />
+                <Field 
+                    name="task" 
+                    component={this.renderInput} 
+                    label="Let's do something!" />
                 <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1> 
             </Form>
 		)
