@@ -10,7 +10,8 @@ class Signin extends Component {
     // Action creator
     this.props.signinUser({name, password}, () => {
       console.log('handleFormSubmit')
-      this.props.loadTasks(name)
+      this.props.loadTasks(name);
+      this.props.loadingBegin();
       this.props.history.push('/tasks')
     });
   }
