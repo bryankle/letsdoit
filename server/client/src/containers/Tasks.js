@@ -52,24 +52,19 @@ class Tabs extends Component {
                         </span>
                         )
             })
-            console.log('allTasks')
-            console.log(allTasks.forEach(function(val) {
-                console.log(val);
-            }))
 
             let panes = [
                         { menuItem: 'Active', pane: activeTasks},
                         { menuItem: 'Completed', pane: completedTasks },
-                        { menuItem: 'All', pane: allTasks.sort(function(a, b) {
-                console.log('alltask filtering')
-                // console.log(val.props.children[0].props.completed)
-                // return val.props.children[0].props.completed !== true
-                return a.props.children[0].props.completed - b.props.children[0].props.completed
-            })},
-                    ]
+                        { menuItem: 'All', pane: allTasks.sort((a, b) => {
+                            return a.props.children[0].props.completed - b.props.children[0].props.completed })},
+                        { menunItem: 'Settings'}
+                        ]
 
             return (
+                <span>
                 <Tab panes={panes} renderActiveOnly={false} />
+                </span>
             )
         }
 }

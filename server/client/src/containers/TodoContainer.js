@@ -34,6 +34,12 @@ class Todo extends Component {
         console.log('this.props')
         console.log(this.props)
         if (!this.props.loading.status) {
+            const completedTaskCount = this.props.tasks.filter(task => task.completed).length;
+            const totalTaskCount = this.props.tasks.length
+            const percent = (completedTaskCount / totalTaskCount) * 100;
+            console.log('completedTaskCount', completedTaskCount);
+            console.log('percent', percent);
+
             return(
                 <div>
                     <Header/>
@@ -43,7 +49,7 @@ class Todo extends Component {
                         {/* Move form to separate container? at later time */}
                         <TaskForm />
                         
-                        <ProgressBar />
+                        <ProgressBar percent={percent}/>
                         <Tasks />
                         </Grid.Column>
                     </Grid>
@@ -62,7 +68,8 @@ class Todo extends Component {
 function mapStateToProps(state) {
     return { 
             loading: state.loading,
-            user: state.auth.user
+            user: state.auth.user,
+            tasks: state.tasks
         } 
 }
 

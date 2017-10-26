@@ -39,7 +39,8 @@ class TaskForm extends Component {
         console.log("TASK FORM actions", this.props);
 		return(
 			<Form 
-            onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                size='massive'
+                onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 <Field name="task" component={this.renderInput} label="Let's do something!" />
                 <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1> 
             </Form>
