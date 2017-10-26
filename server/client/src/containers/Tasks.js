@@ -57,12 +57,6 @@ class Tabs extends Component {
                 console.log(val);
             }))
 
-            // allTasks.filter(function(val) {
-            //     console.log('alltask filtering')
-            //     console.log(val.props.children[0].props.completed)
-            //     return val.props.children[0].props.completed === true
-            // })
-
             let panes = [
                         { menuItem: 'Active', pane: activeTasks},
                         { menuItem: 'Completed', pane: completedTasks },

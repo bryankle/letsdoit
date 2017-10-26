@@ -14,7 +14,8 @@ const TaskItem = (props) => {
 		return (
 			<Checkbox 
 	    	onClick={props.handleClick}
-	    	label={props.task} />
+	    	label={props.task}
+	    	/>
 		)
 	}
   }
