@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { loadTasks } from '../actions/index';
+import * as actions from '../actions';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
@@ -71,7 +70,7 @@ class App extends Component {
               <Icon name='users' />
               Group Tasks
             </Menu.Item>
-            <Menu.Item onClick={() => console.log('hello world')} name='settings'>
+            <Menu.Item onClick={() => this.props.clearCompletedTasks()} name='settings'>
               <Icon name='settings' />
               Settings
             </Menu.Item>
@@ -104,9 +103,5 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ loadTasks }, dispatch)
-}
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, actions)(App);

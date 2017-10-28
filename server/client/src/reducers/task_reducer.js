@@ -2,7 +2,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   LOAD_TASKS,
-  COMPLETE_TASK
+  COMPLETE_TASK,
+  CLEAR_COMPLETED
 } from '../actions/types';
 
 export default(state = {}, action) => {
@@ -27,6 +28,11 @@ export default(state = {}, action) => {
 			completedTask.completed = true;
 			console.log('completedTask', completedTask);
 			return [...state, completedTask]
+		case CLEAR_COMPLETED:
+			console.log("REDUCERS - CLEAR_COMPLETED")
+			console.log('state', state)
+
+			return state.filter(task => !task.completed)
 		default:
 			console.log("Default reducer");
 			return state

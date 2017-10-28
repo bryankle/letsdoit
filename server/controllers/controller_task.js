@@ -60,6 +60,14 @@ exports.completeTask = (req, res, next) => {
 	.then(() => res.send({ userId, taskId }))
 }
 
+exports.clearCompletedTasks = (req, res, next) => {
+	console.log('CONTROLLER - clearCompleted');
+	Task.destroy({
+		where: {completed: true}
+	})
+	.then((data) => res.send(data))
+}
+
 // Adjust task reducer to update Redux store to hold users states in 'tasks'
 
 // Check componentDidMount property to ensure that initially loaded tasks will upload tasks to store

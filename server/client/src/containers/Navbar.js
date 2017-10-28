@@ -6,11 +6,11 @@ import {
     Menu,
     Dropdown
   } from 'semantic-ui-react'
+
 const options = [
-  { key: 1, text: 'Choice 1', value: 1 },
-  { key: 2, text: 'Choice 2', value: 2 },
-  { key: 3, text: 'Choice 3', value: 3 },
+  { key: 1, text: 'Clear Completed', value: 1 }
 ]
+
 class Navbar extends Component {
     
     
@@ -28,7 +28,8 @@ class Navbar extends Component {
                 Tasks
               </Menu.Item>
             </Link>
-              <Dropdown text='Options' options={options} simple item />
+            
+            <Dropdown text='Options' options={options} simple item />
 
             <Link to='/signout'>
               <Menu.Item
