@@ -76,11 +76,11 @@ class App extends Component {
               </Menu.Item>
             </Link>
             <Menu.Item onClick={() => this.props.clearCompletedTasks(localStorage.user)} name='settings'>
-              <Icon name='settings' />
-              Settings
+              <Icon name='trash' />
+              Clear Completed
             </Menu.Item>
           </Sidebar>
-          <Sidebar.Pusher style={{backgroundColor: 'pink', height: '100vh'}}>
+          <Sidebar.Pusher style={{ height: '100vh'}}>
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route path="/tasks" component={RequireAuth(TodoContainer)} />
