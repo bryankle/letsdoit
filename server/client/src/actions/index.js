@@ -9,7 +9,8 @@ import {
 	AUTH_ERROR,
 	FETCH_MESSAGE,
 	LOADING,
-	NOT_LOADING
+	NOT_LOADING,
+	SHOW_SIDEBAR
 } from './types';
 const ROOT_URL = 'http://localhost:3001';
 
@@ -139,3 +140,14 @@ export function fetchMessage() {
 	}
 }
 
+export function showSidebar () {
+	return {
+		type: 'SHOW_SIDEBAR'
+	}
+}
+
+export function hideSidebar () {
+	return {
+		type: 'HIDE_SIDEBAR'
+	}
+}

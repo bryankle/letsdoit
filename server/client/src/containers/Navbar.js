@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from '../actions';
 import {
     Menu,
   } from 'semantic-ui-react'
@@ -71,14 +72,12 @@ class Navbar extends Component {
     console.log(this.props);
     return (
       <Menu>
-        <Link to="/">
           <Menu.Item
             name='editorials'
-            onClick={this.handleItemClick}
+            onClick={this.props.showSidebar}
             >
             Letsdoit
           </Menu.Item>
-        </Link>
 
         {this.renderUserAuth()}
       </Menu>
@@ -90,8 +89,9 @@ class Navbar extends Component {
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.auth.authenticated
+    authenticated: state.auth.authenticated,
+    sidebar: state.sidebar
   }
 }
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, actions)(Navbar);

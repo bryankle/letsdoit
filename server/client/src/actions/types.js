@@ -8,3 +8,6 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const FETCH_MESSAGE = 'FETCH_MESSAGE';
 export const LOADING = 'LOADING';
 export const NOT_LOADING = 'NOT_LOADING';
+export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
+
