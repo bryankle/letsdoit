@@ -1,16 +1,17 @@
 import React from 'react'
-import { Dropdown, Icon } from 'semantic-ui-react'
+import { Dropdown, Menu } from 'semantic-ui-react'
 
-const DropdownMenu = () => (
-  <Dropdown text='Filter Tags' floating labeled button icon='filter' className='icon'>
-    <Dropdown.Menu>
-      <Dropdown.Header icon='tags' content='Filter by tag' />
-      <Dropdown.Divider />
-      <Dropdown.Item description='2 new' text='Important' />
-      <Dropdown.Item description='10 new' text='Hopper' />
-      <Dropdown.Item description='5 new' text='Discussion' />
-    </Dropdown.Menu>
-  </Dropdown>
+const options = [
+  { key: 1, text: 'Choice 1', value: 1 },
+  { key: 2, text: 'Choice 2', value: 2 },
+  { key: 3, text: 'Choice 3', value: 3 },
+]
+
+const DropdownExampleSimple = (props) => (
+  <Menu compact>
+    <Dropdown text='Dropdown' options={options} simple item />
+  </Menu>
+  
 )
 
-export default DropdownMenu;
+export default DropdownExampleSimple

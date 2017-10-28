@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 import {
     Menu,
+    Dropdown
   } from 'semantic-ui-react'
-
+const options = [
+  { key: 1, text: 'Choice 1', value: 1 },
+  { key: 2, text: 'Choice 2', value: 2 },
+  { key: 3, text: 'Choice 3', value: 3 },
+]
 class Navbar extends Component {
     
     
@@ -23,14 +28,12 @@ class Navbar extends Component {
                 Tasks
               </Menu.Item>
             </Link>
-            <Link to='/features'>
               <Menu.Item
                 name='upcomingEvents'
                 onClick={this.handleItemClick}
                 >
-                Features
+                <Dropdown text='Options' options={options} simple item />
               </Menu.Item>
-            </Link>
 
             <Link to='/signout'>
               <Menu.Item

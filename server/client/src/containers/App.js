@@ -15,7 +15,8 @@ import TodoContainer from './TodoContainer';
 import RequireAuth from './auth/require_auth'; // Higher Order Component to secure individual routes with authentication
 import Features from './Features';
 import Welcome from './Welcome';
-import SidebarMenu from './SidebarMenu'
+import SidebarMenu from './SidebarMenu';
+import DropdownMenu from '../components/DropdownMenu';
 
 /*
 
@@ -62,17 +63,17 @@ class App extends Component {
 
         <Sidebar.Pushable>
           <Sidebar as={Menu} animation='overlay' width='thin' icon='labeled' visible={this.props.sidebar.visibility} vertical inverted>
-            <Menu.Item name='home'>
-              <Icon name='home' />
-              Home
+            <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
+              <Icon name='user' />
+              My Tasks
             </Menu.Item>
-            <Menu.Item name='gamepad'>
-              <Icon name='gamepad' />
-              Games
+            <Menu.Item onClick={() => console.log('hello world')} name='group-tasks'>
+              <Icon name='users' />
+              Group Tasks
             </Menu.Item>
-            <Menu.Item name='camera'>
-              <Icon name='camera' />
-              Channels
+            <Menu.Item onClick={() => console.log('hello world')} name='settings'>
+              <Icon name='settings' />
+              Settings
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher style={{backgroundColor: 'pink', height: '100vh'}}>

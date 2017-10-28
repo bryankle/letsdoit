@@ -12,6 +12,7 @@ import Welcome from './Welcome';
 import App from './App';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import DropdownMenu from '../components/DropdownMenu'
 
 
 class SidebarMenu extends Component {
@@ -26,34 +27,25 @@ class SidebarMenu extends Component {
 
     const { visible } = this.state
     return (
-      <div>
-        <Sidebar.Pushable>
-          <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Menu.Item name='home'>
-              <Icon name='home' />
-              Home
+       <Sidebar.Pushable>
+          <Sidebar as={Menu} animation='overlay' width='thin' icon='labeled' visible={this.props.sidebar.visibility} vertical inverted>
+            <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
+              <Icon name='user' />
+              My Tasks
             </Menu.Item>
-            <Menu.Item name='gamepad'>
-              <Icon name='gamepad' />
-              Games
+            <Menu.Item name='group-tasks'>
+              <Icon name='users' />
+              Group Tasks
             </Menu.Item>
-            <Menu.Item name='camera'>
-              <Icon name='camera' />
-              Channels
+            <Menu.Item name='settings'>
+              <Icon name='settings' />
+              Settings
             </Menu.Item>
           </Sidebar>
-          <Sidebar.Pusher>
-              <Switch>
-                <Route exact path="/" component={Welcome} />
-                <Route path="/tasks" component={RequireAuth(TodoContainer)} />
-                <Route path="/features" component={RequireAuth(Features)} />
-                <Route path="/signin" component={Signin} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/signout" component={Signout} />
-              </Switch>
+          <Sidebar.Pusher style={{backgroundColor: 'pink', height: '100vh'}}>
+              {this.props.routes()}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-      </div>
     )
   }
 }
