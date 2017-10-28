@@ -75,7 +75,7 @@ class App extends Component {
               Channels
             </Menu.Item>
           </Sidebar>
-          <Sidebar.Pusher>
+          <Sidebar.Pusher style={{backgroundColor: 'pink', height: '100vh'}}>
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route path="/tasks" component={RequireAuth(TodoContainer)} />

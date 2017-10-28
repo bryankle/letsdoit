@@ -71,10 +71,10 @@ class Navbar extends Component {
     console.log("NAVBAR")
     console.log(this.props);
     return (
-      <Menu>
+      <Menu style={{marginBottom: '0'}}>
           <Menu.Item
             name='editorials'
-            onClick={this.props.showSidebar}
+            onClick={this.props.sidebar.visibility ? this.props.hideSidebar : this.props.showSidebar}
             >
             Letsdoit
           </Menu.Item>
