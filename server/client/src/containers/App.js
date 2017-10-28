@@ -3,7 +3,7 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 
 import Navbar from './Navbar';
@@ -15,6 +15,7 @@ import RequireAuth from './auth/require_auth'; // Higher Order Component to secu
 import Features from './Features';
 import Welcome from './Welcome';
 import SidebarMenu from './SidebarMenu';
+import GroupList from './GroupList';
 import DropdownMenu from '../components/DropdownMenu';
 
 /*
@@ -62,14 +63,18 @@ class App extends Component {
 
         <Sidebar.Pushable>
           <Sidebar as={Menu} animation='overlay' width='thin' icon='labeled' visible={this.props.sidebar.visibility} vertical inverted>
-            <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
-              <Icon name='user' />
-              My Tasks
-            </Menu.Item>
-            <Menu.Item onClick={() => console.log('hello world')} name='group-tasks'>
-              <Icon name='users' />
-              Group Tasks
-            </Menu.Item>
+            <Link to="/tasks">
+              <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
+                <Icon name='user' />
+                My Tasks
+              </Menu.Item>
+            </Link>
+            <Link to="/groups">
+              <Menu.Item onClick={() => console.log('hello world')} name='group-tasks'>
+                <Icon name='users' />
+                Group Tasks
+              </Menu.Item>
+            </Link>
             <Menu.Item onClick={() => this.props.clearCompletedTasks()} name='settings'>
               <Icon name='settings' />
               Settings
@@ -79,6 +84,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Welcome} />
                 <Route path="/tasks" component={RequireAuth(TodoContainer)} />
+                <Route path="/groups" component={GroupList} />
                 <Route path="/features" component={RequireAuth(Features)} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />

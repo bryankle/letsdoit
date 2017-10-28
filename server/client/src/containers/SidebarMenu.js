@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Signup from './auth/Signup';
 import Signin from './auth/Signin';
@@ -29,10 +29,12 @@ class SidebarMenu extends Component {
     return (
        <Sidebar.Pushable>
           <Sidebar as={Menu} animation='overlay' width='thin' icon='labeled' visible={this.props.sidebar.visibility} vertical inverted>
-            <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
-              <Icon name='user' />
-              My Tasks
-            </Menu.Item>
+            <Link to="/tasks">
+              <Menu.Item onClick={() => console.log('hello world')} onClickname='my-tasks'>
+                <Icon name='user' />
+                My Tasks
+              </Menu.Item>
+            </Link>
             <Menu.Item name='group-tasks'>
               <Icon name='users' />
               Group Tasks
