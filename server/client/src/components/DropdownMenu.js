@@ -8,10 +8,8 @@ const options = [
 ]
 
 const DropdownExampleSimple = (props) => (
-  <Menu compact>
-    <Dropdown text='Dropdown' options={options} simple item />
-  </Menu>
-  
+ <Dropdown text='Options' options={options} simple item />
+
 )
 
 export default DropdownExampleSimple

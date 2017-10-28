@@ -28,12 +28,7 @@ class Navbar extends Component {
                 Tasks
               </Menu.Item>
             </Link>
-              <Menu.Item
-                name='upcomingEvents'
-                onClick={this.handleItemClick}
-                >
-                <Dropdown text='Options' options={options} simple item />
-              </Menu.Item>
+              <Dropdown text='Options' options={options} simple item />
 
             <Link to='/signout'>
               <Menu.Item
