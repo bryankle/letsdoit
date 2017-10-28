@@ -27,7 +27,7 @@ export default(state = {}, action) => {
 			})
 			completedTask.completed = true;
 			console.log('completedTask', completedTask);
-			return [...state, completedTask]
+			return [...state]
 		case CLEAR_COMPLETED:
 			console.log("REDUCERS - CLEAR_COMPLETED")
 			console.log('state', state)
