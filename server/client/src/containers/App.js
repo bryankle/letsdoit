@@ -75,7 +75,7 @@ class App extends Component {
                 Group Tasks
               </Menu.Item>
             </Link>
-            <Menu.Item onClick={() => this.props.clearCompletedTasks()} name='settings'>
+            <Menu.Item onClick={() => this.props.clearCompletedTasks(localStorage.user)} name='settings'>
               <Icon name='settings' />
               Settings
             </Menu.Item>

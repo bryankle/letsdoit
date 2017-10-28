@@ -61,11 +61,18 @@ exports.completeTask = (req, res, next) => {
 }
 
 exports.clearCompletedTasks = (req, res, next) => {
-	console.log('CONTROLLER - clearCompleted');
-	Task.destroy({
-		where: {completed: true}
-	})
-	.then((data) => res.send(data))
+	const user = req.params.user;
+	return User.findOne({ where: { name: user } })
+		.then(user => {
+			const userId = user.dataValues.id
+			Task.destroy({
+				where: {
+					userId,
+					completed: true
+				}
+			})
+		})
+	.then((data) => res.send('Successfully cleared'))
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'

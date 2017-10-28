@@ -154,7 +154,9 @@ export function hideSidebar () {
 	}
 }
 
-export function clearCompletedTasks () {
+export function clearCompletedTasks (user) {
+	console.log('ACTION - clearCompletedTasks')
+	axios.delete(`${ROOT_URL}/api/tasks/${user}`)
 	return {
 		type: CLEAR_COMPLETED
 	}
