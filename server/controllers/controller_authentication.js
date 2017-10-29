@@ -1,4 +1,4 @@
-const User = require('../database/models/User');
+const User = require('../database/models/user');
 const jwt = require('jwt-simple'); // Generates JWT token for user
 const config = require('../config'); // File containing secret key for generating token
 

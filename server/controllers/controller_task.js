@@ -1,5 +1,5 @@
 const Task = require('../database/models/task');
-const User = require('../database/models/User');
+const User = require('../database/models/user');
 
 
 // Pass in userId from req.body

@@ -7,13 +7,17 @@ class GroupList extends Component {
 		super(props)
 	}
 
+
 	render() {
+
+
+
 		return(
 			<div>
-			<CreateGroup />
-						<Icon style={{float: 'right', paddingTop: '0.4em', paddingRight: '1em'}} size='big' name='add square'/>
 
-			<Grid style={{margin: '0 auto', paddingLeft: '2em', paddingTop: '1em', width: '80%'}}>
+			<CreateGroup />
+
+			<Grid style={{margin: '0 auto', paddingLeft: '3em', paddingTop: '1em', width: '80%'}}>
  
 			 <Card.Group itemsPerRow={4}>
 			 <Card>
