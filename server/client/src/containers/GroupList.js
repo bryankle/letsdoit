@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
-
+import CreateGroup from './CreateGroupModal';
 
 class GroupList extends Component {
 	constructor(props) {
@@ -10,6 +10,7 @@ class GroupList extends Component {
 	render() {
 		return(
 			<div>
+			<CreateGroup />
 						<Icon style={{float: 'right', paddingTop: '0.4em', paddingRight: '1em'}} size='big' name='add square'/>
 
 			<Grid style={{margin: '0 auto', paddingLeft: '2em', paddingTop: '1em', width: '80%'}}>
