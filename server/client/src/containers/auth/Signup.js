@@ -6,8 +6,11 @@ import * as actions from '../../actions';
 
 class Signup extends Component {
 
-  handleFormSubmit(formProps) {
-    this.props.signupUser(formProps, () => {
+  handleFormSubmit({ name, password }) {
+    this.props.signupUser({ name, password }, () => {
+      console.log('SIGNING UP!!!')
+      this.props.loadTasks(name);
+      this.props.loadingBegin();
       this.props.history.push('/tasks')
     });
   }

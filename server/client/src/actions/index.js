@@ -108,6 +108,7 @@ export function signupUser({ name, password }, redirect) {
 				console.log("User has successfully signed up")
 				dispatch({ type: AUTH_USER })
 				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('user', name);
 				redirect()
 			})
 			// If request is bad

@@ -6,7 +6,7 @@ import {
   CLEAR_COMPLETED
 } from '../actions/types';
 
-export default(state = {}, action) => {
+export default(state = [], action) => {
 	switch(action.type) {
 		case LOAD_TASKS:
 			console.log(action)
