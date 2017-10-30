@@ -5,14 +5,19 @@ const Group = require('../database/models/group');
 // Pass in userId from req.body
 exports.createGroup = (req, res, next) => {
 	console.log('CONTROLLER - createGroup')
+		console.log('GROUP', Group)
+		console.log('USER', User);
 	const { name, creator } = req.body;
-	Group.create({
-		name,
-		creator
+	console.log('req.body');
+	console.log('name', name);
+	console.log('creator', creator);
+	return Group.create({
+		name: name,
+		creator: 'creator'
 	})
-	.then(data => {
+	.then(() => {
 		console.log('createGroup was successful')
-		res.send(data);
+		res.send('Success');
 	})
 	.catch(err => res.send(err))
 }

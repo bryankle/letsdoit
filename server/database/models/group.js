@@ -7,8 +7,7 @@ const Group = db.define('group', {
 		allowNull: false
 	},
 	creator: {
-		type: Sequelize.STRING,
-		allowNull: false
+		type: Sequelize.STRING
 	}
 })
 

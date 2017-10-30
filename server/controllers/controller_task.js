@@ -14,9 +14,9 @@ exports.loadTask = (req, res, next) => {
 			where: { userId }
 		})
 		.then(tasks => {
-			console.log('tasks', tasks);
-			console.log('userId', userId)
-			console.log("Retrieving user tasks")
+			// console.log('tasks', tasks);
+			// console.log('userId', userId)
+			// console.log("Retrieving user tasks")
 		    res.json(tasks);
 		})
 		.catch(err => res.send(err))

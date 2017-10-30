@@ -1,5 +1,4 @@
 const express = require('express');
-const Task = require('../database/models/').Task 
 
 const TaskController = require('../controllers/controller_task');
 const Authentication = require('../controllers/controller_authentication');
@@ -33,11 +32,13 @@ module.exports = function(app) {
 	app.post('/signup', Authentication.signup);
 
 	// Get all groups belonging to logged in user
-	app.get('./api/groups/:userId');
-	// Get group page
-	app.post('./api/groups/:groupId', GroupController.createGroup)
+	app.get('/api/groups/:userId');
+	// Get group page by ID
+	app.get('/api/groups/:groupId');
+	// Create a group
+	app.post('/api/groups/', GroupController.createGroup)
 	// Delete a group page
-	app.delete('./api/groups/:groupId')
+	app.delete('/api/groups/:groupId')
 
 
 	// Test route
