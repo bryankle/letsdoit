@@ -13,7 +13,7 @@ exports.createGroup = (req, res, next) => {
 	console.log('creator', creator);
 	return Group.create({
 		name: name,
-		creator: 'creator'
+		creator: creator
 	})
 	.then((group) => {
 		console.log('createGroup was successful')

@@ -171,9 +171,9 @@ export function addGroup(groupName, userName) {
 			console.log('ACTION - ADD_GROUP')
 			console.log(res);
 			dispatch({
-					type: ADD_GROUP,
-					payload: ''
-				})
+				type: ADD_GROUP,
+				payload: ''
+			})
 		})
 	}
 }

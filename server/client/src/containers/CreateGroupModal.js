@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Icon, Form, Segment, Button } from 'semantic-ui-react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-
+import * as actions from '../actions';
 
 
 class ModalForm extends Component {
@@ -28,6 +28,7 @@ class ModalForm extends Component {
     // Action creator
     console.log('handleSubmit');
     console.log('groupName:', groupName);
+    this.props.addGroup(groupName, localStorage.user);
   }
 
   renderInput({ label, ...field }) {
@@ -44,7 +45,8 @@ class ModalForm extends Component {
   render() {
     // const { header, Form, type } = this.props; 
     const { handleSubmit } = this.props;
-
+    console.log("From CreateGroupModal");
+    console.log(this.props);
     return(
       <Modal 
         size='tiny'
@@ -57,7 +59,7 @@ class ModalForm extends Component {
             onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}
             size='big'>
 
-              <Field name="group" component={this.renderInput} label="Group Name" />
+              <Field name="groupName" component={this.renderInput} label="Group Name" />
 
               <Button color='teal' fluid size='large'>Confirm</Button>
 
@@ -69,4 +71,4 @@ class ModalForm extends Component {
   }
 }
 
-export default reduxForm({form: 'creategroup'})(connect(null, null)(ModalForm))
+export default reduxForm({form: 'creategroup'})(connect(null, actions)(ModalForm))

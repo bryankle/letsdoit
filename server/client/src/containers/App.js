@@ -51,7 +51,7 @@ class App extends Component {
     this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
     console.log("componentDidMount - TESTING API END POINT")
     console.log(this.props)
-    this.props.addGroup('testgroup', 'testcreator')
+    // this.props.addGroup('testgroup', 'testcreator')
     // axios.post('/api/groups/', { name: 'testgroup', creator: 'testcreator' })
 
 
