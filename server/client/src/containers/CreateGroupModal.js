@@ -29,6 +29,7 @@ class ModalForm extends Component {
     console.log('handleSubmit');
     console.log('groupName:', groupName);
     this.props.addGroup(groupName, localStorage.user);
+    this.closeModal();
   }
 
   renderInput({ label, ...field }) {
@@ -49,9 +50,9 @@ class ModalForm extends Component {
     console.log(this.props);
     return(
       <Modal 
+        open={this.state.modalOpen}
         size='tiny'
-        trigger={<Icon style={{float: 'right', paddingTop: '0.4em', paddingRight: '1em'}} size='big' name='add square'/>}
-        closeIcon
+        trigger={<Icon onClick={this.openModal} style={{float: 'right', paddingTop: '0.4em', paddingRight: '1em'}} size='big' name='add square'/>}
       >
       <Modal.Header>Create Group</Modal.Header>
       <Modal.Content>
