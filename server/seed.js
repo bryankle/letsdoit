@@ -6,7 +6,7 @@ var {
   db,
   User,
   Task
-} = require('./models');
+} = require('./database/models');
 
 var data = {
   user: [

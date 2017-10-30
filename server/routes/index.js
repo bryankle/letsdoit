@@ -3,6 +3,7 @@ const Task = require('../database/models/').Task
 
 const TaskController = require('../controllers/controller_task');
 const Authentication = require('../controllers/controller_authentication');
+const GroupController = require('../controllers/controller_group');
 const passportService = require('../services/passport');
 const passport = require('passport');
 // Passport middleware
@@ -27,8 +28,17 @@ module.exports = function(app) {
 	app.post('/api/tasks/:user', TaskController.addtask);
 	app.put('/api/user/:userId/tasks/:taskId', TaskController.completeTask);
 	app.delete('/api/tasks/:user', TaskController.clearCompletedTasks)
+
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
+
+	// Get all groups belonging to logged in user
+	app.get('./api/groups/:userId');
+	// Get group page
+	app.post('./api/groups/:groupId', GroupController.createGroup)
+	// Delete a group page
+	app.delete('./api/groups/:groupId')
+
 
 	// Test route
 	app.get('/', requireAuth, function(req, res) {
