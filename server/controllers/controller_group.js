@@ -15,9 +15,9 @@ exports.createGroup = (req, res, next) => {
 		name: name,
 		creator: 'creator'
 	})
-	.then(() => {
+	.then((group) => {
 		console.log('createGroup was successful')
-		res.send('Success');
+		res.send(group);
 	})
 	.catch(err => res.send(err))
 }

@@ -17,8 +17,8 @@ import Welcome from './Welcome';
 import SidebarMenu from './SidebarMenu';
 import GroupList from './GroupList';
 import DropdownMenu from '../components/DropdownMenu';
-
 import axios from 'axios'; // Testing with axios
+
 /*
 
 App
@@ -50,8 +50,9 @@ class App extends Component {
     // For when user is already logged in to load tasks
     this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
     console.log("componentDidMount - TESTING API END POINT")
-
-    axios.post('/api/groups/', { name: 'testgroup', creator: 'testcreator' })
+    console.log(this.props)
+    this.props.addGroup('testgroup', 'testcreator')
+    // axios.post('/api/groups/', { name: 'testgroup', creator: 'testcreator' })
 
 
   }

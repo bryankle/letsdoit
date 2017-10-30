@@ -12,7 +12,8 @@ import {
 	NOT_LOADING,
 	SHOW_SIDEBAR,
 	HIDE_SIDEBAR,
-	CLEAR_COMPLETED
+	CLEAR_COMPLETED,
+	ADD_GROUP
 } from './types';
 const ROOT_URL = 'http://localhost:3001';
 
@@ -160,5 +161,19 @@ export function clearCompletedTasks (user) {
 	axios.delete(`${ROOT_URL}/api/tasks/${user}`)
 	return {
 		type: CLEAR_COMPLETED
+	}
+}
+
+export function addGroup(groupName, userName) {
+	return function(dispatch) {
+		axios.post(`${ROOT_URL}/api/groups`, { name: groupName, creator: userName })
+		.then((res) => {
+			console.log('ACTION - ADD_GROUP')
+			console.log(res);
+			dispatch({
+					type: ADD_GROUP,
+					payload: ''
+				})
+		})
 	}
 }

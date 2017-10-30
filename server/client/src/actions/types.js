@@ -11,3 +11,4 @@ export const NOT_LOADING = 'NOT_LOADING';
 export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
 export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const ADD_GROUP = 'ADD_GROUP';
