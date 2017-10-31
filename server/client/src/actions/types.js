@@ -11,4 +11,7 @@ export const NOT_LOADING = 'NOT_LOADING';
 export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
 export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const LOAD_GROUPS = 'LOAD_GROUPS';
 export const ADD_GROUP = 'ADD_GROUP';
+export const DELETE_GROUP = 'DELETE_GROUP';
+export const EDIT_GROUP = 'EDIT_GROUP';

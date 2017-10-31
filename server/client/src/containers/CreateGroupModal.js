@@ -30,16 +30,17 @@ class ModalForm extends Component {
     console.log('groupName:', groupName);
     this.props.addGroup(groupName, localStorage.user);
     this.closeModal();
+
   }
 
   renderInput({ label, ...field }) {
     return (
        <Form.Input
-                { ...field.input }
-                fluid
-                iconPosition='left'
-                placeholder= { label }
-              />
+          { ...field.input }
+          fluid
+          iconPosition='left'
+          placeholder= { label }
+        />
       )
   }
 
