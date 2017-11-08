@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
 import CreateGroup from './CreateGroupModal';
 import GroupCard from '../components/GroupCard';
@@ -8,9 +10,13 @@ class GroupList extends Component {
 		super(props)
 	}
 
+	componentDidMount() {
+		console.log('componentDidMount')
+	}
 
 	render() {
-
+		console.log('GroupList')
+		console.log(this.props)
 
 
 		return(
@@ -35,4 +41,10 @@ class GroupList extends Component {
 	}
 }
 
-export default GroupList;
+function mapStateToProps(state) {
+	return {
+		group: state.group
+	}
+}
+
+export default connect(mapStateToProps, actions)(GroupList)

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-	ADD_GROUP
+	ADD_GROUP,
+	LOAD_GROUPS
 } from './types';
 
 const ROOT_URL = 'http://localhost:3001';
@@ -16,5 +17,15 @@ export function addGroup(groupName, userName) {
 				payload: res.data
 			})
 		})
+	}
+}
+// 	app.get('/api/groups/:userId');
+
+export function loadGroup(userId) {
+	return function(dispatch) {
+		axios.get(`/api/groups/${userId}`)
+			.then((res) => {
+				console.log('ACTION - LOAD_GROUPS')
+			})
 	}
 }

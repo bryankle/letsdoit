@@ -5,7 +5,9 @@ const Group = require('./group');
 
 User.hasMany(Task);
 Group.hasMany(Task); 
-User.belongsToMany(Group, {through: 'UserGroup'});
+User.belongsToMany(Group, {through: 'user_group'});
+Group.belongsToMany(User, {through: 'user_group'});
+
 // Group.hasMany(User);
 
 module.exports = {
