@@ -25,10 +25,8 @@ exports.createGroup = (req, res, next) => {
 			.then(user => {
 				console.log('user.dataValues', user.dataValues)
 				group.addUser(user)
+				res.send(group)
 			})
-		// group.addUser()
-		// console.log('createGroup was successful')
-		// res.send(group);
 	})
 	.catch(err => res.send(err))
 }

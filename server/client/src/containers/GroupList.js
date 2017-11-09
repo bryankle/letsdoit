@@ -46,11 +46,7 @@ class GroupList extends Component {
  
 			<Card.Group itemsPerRow={3}>
 				{this.renderGroups()}
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
+				
 			</Card.Group>
 
 		</Grid>
