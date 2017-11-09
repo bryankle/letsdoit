@@ -26,7 +26,12 @@ class GroupList extends Component {
 				console.log('GROUP MAP')
 				console.log('id', id)
 				return (
-					<GroupCard groupName={name} groupCreator={creator} groupId={id} deleteGroup={this.props.deleteGroup}/>
+					<GroupCard 
+						groupName={name} 
+						groupCreator={creator} 
+						groupId={id} 
+						deleteGroup={this.props.deleteGroup}
+					/>
 				)
 			})
 	}

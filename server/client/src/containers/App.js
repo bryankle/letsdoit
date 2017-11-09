@@ -16,6 +16,7 @@ import Features from './Features';
 import Welcome from './Welcome';
 import SidebarMenu from './SidebarMenu';
 import GroupList from './GroupList';
+import GroupPage from './GroupPage';
 import DropdownMenu from '../components/DropdownMenu';
 import axios from 'axios'; // Testing with axios
 
@@ -89,6 +90,7 @@ class App extends Component {
                 <Route exact path="/" component={Welcome} />
                 <Route path="/tasks" component={RequireAuth(TodoContainer)} />
                 <Route path="/groups" component={GroupList} />
+                <Route path="/group/:groupId" component={GroupPage}/>
                 <Route path="/features" component={RequireAuth(Features)} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
