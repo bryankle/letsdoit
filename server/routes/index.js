@@ -32,14 +32,15 @@ module.exports = function(app) {
 	app.post('/signup', Authentication.signup);
 
 	// Get all groups belonging to logged in user
-	app.get('/api/groups/:userId');
+	app.get('/api/groups/', GroupController.loadGroups);
 	// Get group page by ID
 	app.get('/api/groups/:groupId');
 	// Create a group
 	app.post('/api/groups/', GroupController.createGroup)
 	// Delete a group page
-	app.delete('/api/groups/:groupId')
-
+	app.delete('/api/group/:groupId', GroupController.deleteGroup);
+	// Add a user to a group
+	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
 
 	// Test route
 	app.get('/', requireAuth, function(req, res) {

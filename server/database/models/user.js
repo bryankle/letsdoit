@@ -1,6 +1,7 @@
 const db = require('./db');
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt-nodejs');
+const Groups = require('./group')
 
 const User = db.define('user', {
 	name: {

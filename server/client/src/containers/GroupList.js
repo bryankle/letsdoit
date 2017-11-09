@@ -12,6 +12,23 @@ class GroupList extends Component {
 
 	componentDidMount() {
 		console.log('componentDidMount')
+		console.log('running loadGroup')
+		this.props.loadGroup(1);
+		// this.props.addToGroup(1, 1)
+		this.renderGroups = this.renderGroups.bind(this);
+	}
+
+	renderGroups() {
+		// Render groups once props have been received
+		const groups = this.props.groups;
+			return this.props.groups.map(group => {
+				let { name, creator, id } = group;
+				console.log('GROUP MAP')
+				console.log('id', id)
+				return (
+					<GroupCard groupName={name} groupCreator={creator} groupId={id} deleteGroup={this.props.deleteGroup}/>
+				)
+			})
 	}
 
 	render() {
@@ -26,13 +43,9 @@ class GroupList extends Component {
 
 			<Grid style={{margin: '0 auto', paddingLeft: '3em', paddingTop: '1em', width: '80%'}}>
  
-			<Card.Group itemsPerRow={4}>
-
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
-				<GroupCard />
+			<Card.Group itemsPerRow={3}>
+				{this.props.groups.length ? this.renderGroups() : ''}
+				
 			</Card.Group>
 
 		</Grid>
@@ -43,7 +56,7 @@ class GroupList extends Component {
 
 function mapStateToProps(state) {
 	return {
-		group: state.group
+		groups: state.group
 	}
 }
 

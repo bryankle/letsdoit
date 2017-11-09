@@ -1,4 +1,5 @@
 const User = require('../database/models/user');
+const Group = require('../database/models/group')
 const jwt = require('jwt-simple'); // Generates JWT token for user
 const config = require('../config'); // File containing secret key for generating token
 
@@ -29,7 +30,11 @@ exports.signup = function(req, res, next) {
 
 	return User.create({
 			name: name,
-			password: password
+			password: password,
+			include: [{
+				model: Group,
+				as: 'groups'
+			}]
 		})
 		.then((user) => {
 			console.log('User created')
