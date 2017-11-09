@@ -15,3 +15,4 @@ export const LOAD_GROUPS = 'LOAD_GROUPS';
 export const ADD_GROUP = 'ADD_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const EDIT_GROUP = 'EDIT_GROUP';
+export const ADD_TO_GROUP = 'ADD_TO_GROUP';

@@ -35,11 +35,34 @@ exports.createGroup = (req, res, next) => {
 
 exports.loadGroups = (req, res, next) => {
 	console.log('CONTROLLER - loadGroups')
-	Group.findAll()
+	Group.findAll({
+		include: [{
+			model: User
+		}]
+	})
 	.then(group => {
 		console.log('group', group)
 		res.send(group)
 	})
+}
+
+exports.addToGroup = (req, res, next) => {
+	console.log('CONTROLLER - addToGroup')
+	const { userId, groupId } = req.params;
+	Group.findById(groupId)
+		.then(group => {
+			User.findById(userId)
+				.then(user => {
+					group.addUser(user)
+				})
+		})
+		.then(data => {
+			console.log("User has been successfully added to group")
+			res.send(data)
+		})
+	groupId.add(userId);
+
+	// res.send(group);
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'
