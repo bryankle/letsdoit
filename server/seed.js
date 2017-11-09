@@ -10,10 +10,14 @@ var {
 
 var data = {
   user: [
-    {name: "bryan", password: "123password"}
+    {name: "bryan", password: "bryan"},
+    {name: 'a', password: 'test'},
+    {name: 'test', password: 'test'}
     ],
   task: [
-    {content: "haircut", completed: false}
+    {content: "haircut", completed: false},
+    {content: 'buy groceries', completed: true},
+    {content: 'mow lawn', completed: false},
   ]
 };
 
