@@ -12,6 +12,8 @@ export default function(state = [], action) {
 			return action.payload
 		case ADD_GROUP:
 			return [...state, action.payload]
+		case DELETE_GROUP:
+			return [...state].filter(group => group !== action.payload)
 		default:
 			return state;
 	}

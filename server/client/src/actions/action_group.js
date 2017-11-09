@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 	ADD_GROUP,
 	LOAD_GROUPS,
-	ADD_TO_GROUP
+	ADD_TO_GROUP,
+	DELETE_GROUP
 } from './types';
 
 const ROOT_URL = 'http://localhost:3001';
@@ -44,6 +45,20 @@ export function addToGroup(userId, groupId) {
 				console.log('ACTION - addGroup');
 				dispatch({
 					type: ADD_GROUP,
+					payload: res.data
+				})
+			})
+	}
+}
+// 	app.delete('/api/groups/:groupId');
+
+export function deleteGroup(groupId) {
+	return function(dispatch) {
+		axios.delete(`api/group/${groupId}`)
+			.then(res => {
+				console.log('ACTION - deleteGroup')
+				dispatch({
+					type: DELETE_GROUP,
 					payload: res.data
 				})
 			})

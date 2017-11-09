@@ -59,12 +59,14 @@ exports.addToGroup = (req, res, next) => {
 			res.send(data)
 		})
 	groupId.add(userId);
-
-	// res.send(group);
 }
 
-// Adjust task reducer to update Redux store to hold users states in 'tasks'
-
-// Check componentDidMount property to ensure that initially loaded tasks will upload tasks to store
-
-// Ensure rendered tasks are coming from store state
+exports.deleteGroup = (req, res, next) => {
+	console.log('CONTROLLER - deleteGroup');
+	const { groupId } = req.params;
+	Group.findById(groupId)
+		.then(group => {
+			return group.destroy();
+		})
+		.then(() => res.send(groupId))
+}

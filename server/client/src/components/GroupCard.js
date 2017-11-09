@@ -7,16 +7,19 @@ class GroupCard extends Component {
 
 
 	render() {
+		const { groupName, groupCreator, groupId, deleteGroup } = this.props;
+
 		return(
 			<Card fluid>
 
 			    <Card.Content>
 			      <Card.Header>
-			        {this.props.groupName}
+			        {groupName}
+				<Icon name='close' onClick={() => deleteGroup(groupId)}/>
 			      </Card.Header>
 			      <Card.Meta>
 			        <span className='date'>
-			          Created by: {this.props.groupCreator}
+			          Created by: {groupCreator}
 			        </span>
 			      </Card.Meta>
 			      <Card.Description>

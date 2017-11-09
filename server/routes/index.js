@@ -38,7 +38,7 @@ module.exports = function(app) {
 	// Create a group
 	app.post('/api/groups/', GroupController.createGroup)
 	// Delete a group page
-	app.delete('/api/groups/:groupId');
+	app.delete('/api/group/:groupId', GroupController.deleteGroup);
 	// Add a user to a group
 	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
 
