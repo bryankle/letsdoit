@@ -15,7 +15,7 @@ exports.createGroup = (req, res, next) => {
 		name: name,
 		creator: creator,
 		include: [{
-			model: 'User',
+			model: User,
 			as: 'users'
 		}]
 
@@ -43,7 +43,7 @@ exports.loadGroups = (req, res, next) => {
 		res.send(group)
 	})
 }
-
+// Working
 exports.addToGroup = (req, res, next) => {
 	console.log('CONTROLLER - addToGroup')
 	const { userId, groupId } = req.params;
@@ -60,7 +60,7 @@ exports.addToGroup = (req, res, next) => {
 		})
 	groupId.add(userId);
 }
-
+// Working
 exports.deleteGroup = (req, res, next) => {
 	console.log('CONTROLLER - deleteGroup');
 	const { groupId } = req.params;

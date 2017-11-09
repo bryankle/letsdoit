@@ -11,7 +11,11 @@ exports.loadTask = (req, res, next) => {
 	.then(user => user.id)
 	.then(userId => {
 		Task.findAll({
-			where: { userId }
+			where: { userId },
+			include: [{
+	            model: User,
+	            as: 'user'
+	        }]
 		})
 		.then(tasks => {
 			// console.log('tasks', tasks);
@@ -19,7 +23,7 @@ exports.loadTask = (req, res, next) => {
 			// console.log("Retrieving user tasks")
 		    res.json(tasks);
 		})
-		.catch(err => res.send(err))
+		.catch(err => console.log(err))
 	})
 }
 
@@ -46,6 +50,7 @@ exports.addtask = (req, res, next) => {
 			res.send(task)
 		})
 	})
+	.catch(err => console.log(err))
 	// Assign task parentID (userID) this ID
 }
 
@@ -73,6 +78,9 @@ exports.clearCompletedTasks = (req, res, next) => {
 			})
 		})
 	.then((data) => res.send('Successfully cleared'))
+	.catch(err => console.log(err))
+
+
 }
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'
