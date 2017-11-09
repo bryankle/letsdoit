@@ -11,16 +11,9 @@ exports.loadTask = (req, res, next) => {
 	.then(user => user.id)
 	.then(userId => {
 		Task.findAll({
-			where: { userId },
-			include: [{
-	            model: User,
-	            as: 'user'
-	        }]
+			where: { userId }
 		})
 		.then(tasks => {
-			// console.log('tasks', tasks);
-			// console.log('userId', userId)
-			// console.log("Retrieving user tasks")
 		    res.json(tasks);
 		})
 		.catch(err => console.log(err))
