@@ -12,6 +12,8 @@ class GroupList extends Component {
 
 	componentDidMount() {
 		console.log('componentDidMount')
+		console.log('running loadGroup')
+		this.props.loadGroup(1);
 	}
 
 	render() {

@@ -13,10 +13,15 @@ exports.createGroup = (req, res, next) => {
 	console.log('creator', creator);
 	return Group.create({
 		name: name,
-		creator: creator
+		creator: creator,
+		include: [{
+			model: 'User',
+			as: 'users'
+		}]
+
 	})
 	.then((group) => {
-		return User.findOne({where: { name: 'bryan' }})
+		return User.findOne({where: { name: creator }})
 			.then(user => {
 				console.log('user.dataValues', user.dataValues)
 				group.addUser(user)
@@ -28,12 +33,14 @@ exports.createGroup = (req, res, next) => {
 	.catch(err => res.send(err))
 }
 
-// exports.loadGroups = (req, res, next) => {
-// 	console.log('CONTROLLER - loadGroups')
-// 	Group.find({
-
-// 	})
-// }
+exports.loadGroups = (req, res, next) => {
+	console.log('CONTROLLER - loadGroups')
+	Group.findAll()
+	.then(group => {
+		console.log('group', group)
+		res.send(group)
+	})
+}
 
 // Adjust task reducer to update Redux store to hold users states in 'tasks'
 

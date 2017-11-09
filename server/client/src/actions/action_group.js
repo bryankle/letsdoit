@@ -22,10 +22,16 @@ export function addGroup(groupName, userName) {
 // 	app.get('/api/groups/:userId');
 
 export function loadGroup(userId) {
+	console.log('ACTION	- loadGroup')
 	return function(dispatch) {
 		axios.get(`/api/groups/${userId}`)
 			.then((res) => {
 				console.log('ACTION - LOAD_GROUPS')
+				console.log('res', res)
+				dispatch({
+					type: LOAD_GROUPS,
+					payload: res.data
+				})
 			})
 	}
 }

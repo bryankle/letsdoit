@@ -32,7 +32,7 @@ module.exports = function(app) {
 	app.post('/signup', Authentication.signup);
 
 	// Get all groups belonging to logged in user
-	app.get('/api/groups/:userId');
+	app.get('/api/groups/:userId', GroupController.loadGroups);
 	// Get group page by ID
 	app.get('/api/groups/:groupId');
 	// Create a group
