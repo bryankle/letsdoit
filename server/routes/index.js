@@ -3,6 +3,7 @@ const express = require('express');
 const TaskController = require('../controllers/controller_task');
 const Authentication = require('../controllers/controller_authentication');
 const GroupController = require('../controllers/controller_group');
+const GroupTaskController = require('../controllers/controller_group_task');
 const passportService = require('../services/passport');
 const passport = require('passport');
 // Passport middleware
@@ -43,7 +44,7 @@ module.exports = function(app) {
 	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
 
 	// Retrieve all group tasks
-	app.get('/api/group/:groupId/tasks');
+	app.get('/api/group/:groupId/tasks', GroupTaskController.loadTasks);
 	// Create new group task
 	app.post('/api/group/:groupId/tasks');
 	// Complete group task
