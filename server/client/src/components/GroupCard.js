@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Card, Image, Icon } from 'semantic-ui-react';
+import { Grid, Card, Icon } from 'semantic-ui-react';
 
 
 class GroupCard extends Component {
@@ -8,25 +8,25 @@ class GroupCard extends Component {
 
 	render() {
 		return(
-			<Card>
-			    <Image src='/assets/images/avatar/large/matthew.png' />
+			<Card fluid>
+
 			    <Card.Content>
 			      <Card.Header>
-			        Matthew
+			        {this.props.groupName}
 			      </Card.Header>
 			      <Card.Meta>
 			        <span className='date'>
-			          Joined in 2015
+			          Created by: {this.props.groupCreator}
 			        </span>
 			      </Card.Meta>
 			      <Card.Description>
-			        Matthew is a musician living in Nashville.
+			       	This is a group description
 			      </Card.Description>
 			    </Card.Content>
 			    <Card.Content extra>
 			      <a>
 			        <Icon name='user' />
-			        22 Friends
+			        5 members
 			      </a>
 			    </Card.Content>
 	  		</Card>

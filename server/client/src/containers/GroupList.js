@@ -14,7 +14,22 @@ class GroupList extends Component {
 		console.log('componentDidMount')
 		console.log('running loadGroup')
 		this.props.loadGroup(1);
-		this.props.addToGroup(1, 1)
+		// this.props.addToGroup(1, 1)
+		this.renderGroups = this.renderGroups.bind(this);
+	}
+
+	renderGroups() {
+		// Render groups once props have been received
+		if (this.props.groups.length) {
+			const groups = this.props.groups;
+			return this.props.groups.map(function(group) {
+				let { name, creator } = group;
+				return (
+					<GroupCard groupName={name} groupCreator={creator} />
+				)
+			})
+		}
+		else return ''
 	}
 
 	render() {
@@ -29,8 +44,8 @@ class GroupList extends Component {
 
 			<Grid style={{margin: '0 auto', paddingLeft: '3em', paddingTop: '1em', width: '80%'}}>
  
-			<Card.Group itemsPerRow={4}>
-
+			<Card.Group itemsPerRow={3}>
+				{this.renderGroups()}
 				<GroupCard />
 				<GroupCard />
 				<GroupCard />
@@ -46,7 +61,7 @@ class GroupList extends Component {
 
 function mapStateToProps(state) {
 	return {
-		group: state.group
+		groups: state.group
 	}
 }
 
