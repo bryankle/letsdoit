@@ -42,6 +42,15 @@ module.exports = function(app) {
 	// Add a user to a group
 	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
 
+	// Retrieve all group tasks
+	app.get('/api/group/:groupId/tasks');
+	// Create new group task
+	app.post('/api/group/:groupId/tasks');
+	// Complete group task
+	app.put('/api/group/:groupId/tasks/:taskId')
+	// Remove all completed tasks
+	app.delete('/api/group/:groupId/tasks')
+
 	// Test route
 	app.get('/', requireAuth, function(req, res) {
 		console.log('auth success')
