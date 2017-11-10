@@ -8,7 +8,7 @@ import * as actions from '../actions';
   // Map over task items and set filters on different tabs
 
 class Tabs extends Component {
-
+    // Mode user || group
     render() {
             console.log('USER TASKS RENDERING');
             console.log('this.props', this.props)
@@ -69,14 +69,7 @@ class Tabs extends Component {
         }
 }
 
-function mapStateToProps(state) {
-  return {
-    tasks: state.tasks,
-    auth: state.auth
-  }
-}
 
-
-export default connect(mapStateToProps, actions)(Tabs);
+export default connect(null, actions)(Tabs);
 
 

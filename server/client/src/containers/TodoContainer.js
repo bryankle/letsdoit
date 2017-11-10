@@ -46,7 +46,7 @@ class Todo extends Component {
                         <TaskForm />
                         
                         <ProgressBar percent={percent}/>
-                        <Tasks />
+                        <Tasks tasks={this.props.tasks}/>
                         </Grid.Column>
                     </Grid>
                 </div>
