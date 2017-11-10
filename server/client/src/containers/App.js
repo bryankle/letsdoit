@@ -38,7 +38,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: localStorage.username
+      currentUser: localStorage.name
     }
   }
   // Initial task fetching
