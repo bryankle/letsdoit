@@ -10,31 +10,33 @@ class GroupPage extends Component {
 	}
 
 	componentDidMount() {
-		
-		this.props.groupLoadTasks(1); // Do not remove; change ID associated later to reflect groupId
+		const { groupId } = this.props.match.params;
+		console.log('componentDidMount')
+		console.log('groupId', groupId)
+		this.props.groupLoadTasks(groupId); // Do not remove; change ID associated later to reflect groupId
 		// axios.post(`/api/group/1/tasks`, { task: 'testing' })
-		this.props.groupAddTask(1, 'hello testing')
+		// this.props.groupAddTask(1, 'hello testing')
 	}
-	
+
 	render() {
 		console.log('GroupPage')
 		console.log('this.props', this.props)
 		if (this.props.match.params.groupId) {
-			return <TodoContainer groupTasks={this.props.groupTasks}/>
+			return <TodoContainer {...this.props}/>
 		}
 
-		// else return(
-		// 	<div>
-		// 		<TodoContainer />
-		// 	</div>
-		// )
+		else return(
+			<div>
+				hello
+			</div>
+		)
 	}
-
 }
 
 function mapStateToProps(state) {
 	return {
-		groupTasks: state.groupTasks.tasks // Refactor later
+		groupTasks: state.groupTasks.tasks, // Refactor later,
+		loading: state.loading
 	}
 }
 

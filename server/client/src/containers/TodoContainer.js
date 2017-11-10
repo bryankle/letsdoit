@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import * as actions from '../actions';
 import { Grid } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
@@ -63,13 +61,4 @@ class Todo extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return { 
-//             loading: state.loading,
-//             user: state.auth.user, // Why do we need this? - Delete later
-//             userTasks: state.tasks
-//         } 
-// }
-
-// export default connect(mapStateToProps, actions)(Todo);
 export default(Todo);

@@ -6,7 +6,7 @@ exports.loadTasks = (req, res, next) => {
     const { groupId } = req.params;
     console.log('CONTROLLER - loadTasks')
     Group.findOne({
-        where: { id: 1 },
+        where: { id: groupId },
         include: [{
             model: Task,
             as: 'tasks'
