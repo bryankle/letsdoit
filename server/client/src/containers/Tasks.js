@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Tab } from 'semantic-ui-react';
 import TaskItem from '../components/TaskItem';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 
 
   // Map over task items and set filters on different tabs
@@ -70,6 +68,5 @@ class Tabs extends Component {
 }
 
 
-export default connect(null, actions)(Tabs);
-
+export default Tabs;
 
