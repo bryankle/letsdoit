@@ -21,8 +21,9 @@ export function signinUser({ name, password }, redirect) {
 					payload: name
 					});
 				// - Save the JWT tokenloca
+
 				localStorage.setItem('token', response.data.token);
-				localStorage.setItem('user', name);
+				localStorage.setItem('userId', response.data.user.id);
 				// - redirect tot he route '/feature' --> '/tasks'
 				// loadTasks(name).then(() =>)
 

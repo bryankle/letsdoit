@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Input } from 'semantic-ui-react';
-// import { reset, reduxForm, Field } from 'redux-form';
-// import { connect } from 'react-redux';
-// import * as actions from '../actions';
+
+/*
+    REMOVE REDUX FROM COMPONENT LATER
+    PASS IN ADDTASK AS PROPS
+*/
 
 class TaskForm extends Component {
 
@@ -20,41 +22,26 @@ class TaskForm extends Component {
     }
 
     handleSubmit() {
+        this.props.addTask(localStorage.userId, this.state.inputValue);
         this.setState({ inputValue: '' })
     }
   
 	render() {
 
-        const { handleSubmit } = this.props;
 
-        console.log("TASK FORM actions", this.props);
 		return(
-			<Form 
-                onSubmit={}>
+			<Form onSubmit={this.handleSubmit}>
                 <Input 
-                onChange={() => }
-                style={{width: '100%'}}
-                size='massive'
-                placeholder="Let's do something"
-            />
+                    onChange={this.handleChange}
+                    style={{width: '100%'}}
+                    size='massive'
+                    placeholder="Let's do something"
+                />
                 <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1> 
             </Form>
 		)
 	}
 }
 
-
-
-// function mapStateToProps(state) {
-//   return { 
-//     errorMessage: state.tasks.error,
-//     tasks: state.tasks,
-//     user: state.auth.user
-//     }
-// }
-
-// const afterSubmit = (result, dispatch) => {
-//     dispatch(reset('taskform'));
-// }
 
 export default TaskForm;

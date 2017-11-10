@@ -22,7 +22,13 @@ class GroupPage extends Component {
 		console.log('GroupPage')
 		console.log('this.props', this.props)
 		if (this.props.match.params.groupId) {
-			return <TodoContainer {...this.props}/>
+			return (
+				<TodoContainer
+					tasks={this.props.groupTasks}
+					// completeTask={} 
+					loading={this.props.loading}
+					loadingComplete={this.props.loadingComplete}
+				/>)
 		}
 
 		else return(

@@ -27,10 +27,10 @@ class Todo extends Component {
 
     render() {
 
-        const { userTasks, completeTask, groupTasks } = this.props;
+        const { tasks, completeTask, addTask } = this.props;
 
         if (!this.props.loading.status) {
-            let tasks = groupTasks ? groupTasks : userTasks; // If group tasks were passed in as props, render instead of user tasks
+            // let tasks = groupTasks ? groupTasks : userTasks; // If group tasks were passed in as props, render instead of user tasks
             console.log('this.props', this.props)
             const completedTaskCount = tasks.filter(task => task.completed).length;
             const totalTaskCount = tasks.length
@@ -43,7 +43,7 @@ class Todo extends Component {
                     <Grid centered columns={2}>
                         <Grid.Column>
                         {/* Move form to separate container? at later time */}
-                        <TaskForm />
+                        <TaskForm addTask={addTask}/>
                         
                         <ProgressBar percent={percent}/>
                         <Tasks tasks={tasks} completeTask={completeTask}/>

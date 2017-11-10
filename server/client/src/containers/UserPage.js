@@ -9,7 +9,13 @@ class UserPage extends Component {
 	}
 	render() {
 		return (
-			<TodoContainer {...this.props}/>
+			<TodoContainer 
+				tasks={this.props.userTasks}
+				completeTask={this.props.completeTask}
+				loading={this.props.loading}
+				loadingComplete={this.props.loadingComplete}
+				addTask={this.props.addTask}
+			/>
 		)
 	}
 }

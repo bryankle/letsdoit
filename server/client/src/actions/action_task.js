@@ -22,16 +22,15 @@ export function loadTasks(user) {
 	}
 }
 
-export const addTask = (user, task) => {
+export const addTask = (userId, task) => {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/api/tasks/${user}`, { 
+		axios.post(`${ROOT_URL}/api/tasks/${userId}`, { 
 				task: task
 				}
 			)
 			.then(res => {
 				console.log('Task is being added...');
 				console.log("Adding task", task);
-				console.log("User", user)
 				dispatch({ type: ADD_TASK, payload: res.data })
 			})
 	}

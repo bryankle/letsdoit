@@ -22,21 +22,15 @@ exports.loadTask = (req, res, next) => {
 
 exports.addtask = (req, res, next) => {
 	const task = req.body.task;
-	const user = req.params.user;
-	const userId = 1;
+	const userId = req.params.userId;
 	// Find userID given username
-	return User.findOne({
-		where: {
-			name: user
-		}
-	}).then((user) => {
+	return User.findById(userId).then((user) => {
 		console.log('Creating a new task with this ID')
 		console.log(user);
-		console.log(user.dataValues.id);
 		return Task.create({
 			content: task,
 			completed: false,
-			userId: user.dataValues.id
+			userId
 		})
 		.then(task => {
 			console.log(`Task: ${task} added`);

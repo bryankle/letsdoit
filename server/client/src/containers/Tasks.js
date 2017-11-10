@@ -6,7 +6,7 @@ import TaskItem from '../components/TaskItem';
   // Map over task items and set filters on different tabs
 
 class Tabs extends Component {
-    // Mode user || group
+
     render() {
             console.log('USER TASKS RENDERING');
             console.log('this.props', this.props)
