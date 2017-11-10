@@ -10,10 +10,25 @@ class GroupPage extends Component {
 	}
 
 	componentDidMount() {
-		// axios.get('/api/group/1/tasks')
-		// 	.then(data => console.log('data', data))
-		this.props.groupLoadTasks(1);
+		
+		this.props.groupLoadTasks(1); // Do not remove; change ID associated later to reflect groupId
+		// axios.post(`/api/group/1/tasks`, { task: 'testing' })
+		this.props.groupAddTask(1, 'hello testing')
 	}
+
+
+// export function groupAddTask(groupId, task) {
+// 	return function(dispatch) {
+// 		console.log("ACTION - groupAddTask");
+// 		axios.post(`/api/group/${groupId}/tasks`, { task })
+// 			.then(res => {
+// 				dispatch({
+// 					type: GROUP_ADD_TASK,
+// 					payload: res.data
+// 				})
+// 			})
+// 	}
+// }
 
 	render() {
 		console.log('GroupPage')

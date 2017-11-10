@@ -22,23 +22,19 @@ class Todo extends Component {
     }
 
     componentWillMount() {
-        console.log('hello from todocontainer');
-        // this.props.loadTasks(localStorage.user)
-
         setTimeout(() => {
             this.props.loadingComplete();
         }, 1000)
     }
 
     render() {
-        console.log('this.props')
-        console.log(this.props)
+
         if (!this.props.loading.status) {
+            console.log('this.props', this.props)
+            console.log('this.props.tasks', this.props.tasks)
             const completedTaskCount = this.props.tasks.filter(task => task.completed).length;
             const totalTaskCount = this.props.tasks.length
             const percent = (completedTaskCount / totalTaskCount) * 100;
-            console.log('completedTaskCount', completedTaskCount);
-            console.log('percent', percent);
 
             return(
                 <div>

@@ -72,8 +72,7 @@ class Tabs extends Component {
 function mapStateToProps(state) {
   return {
     tasks: state.tasks,
-    auth: state.auth,
-    test: state
+    auth: state.auth
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Card, Icon } from 'semantic-ui-react';
-
+import { Link } from 'react-router-dom';
 
 class GroupCard extends Component {
 
@@ -14,7 +14,7 @@ class GroupCard extends Component {
 
 			    <Card.Content>
 			      <Card.Header>
-			        {groupName}
+			        <Link to={`/group/${groupId}`}>{groupName}</Link>
 				<Icon name='close' onClick={() => deleteGroup(groupId)}/>
 			      </Card.Header>
 			      <Card.Meta>
