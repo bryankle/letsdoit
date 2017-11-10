@@ -22,7 +22,7 @@ class TaskForm extends Component {
     }
 
     handleSubmit() {
-        this.props.addTask(localStorage.userId, this.state.inputValue);
+        this.props.addTask(this.props.id, this.state.inputValue);
         this.setState({ inputValue: '' })
     }
   
