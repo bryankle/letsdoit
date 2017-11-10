@@ -24,6 +24,8 @@ export function groupLoadTasks(groupId) {
 export function groupAddTask(groupId, task) {
 	return function(dispatch) {
 		console.log("ACTION - groupAddTask");
+		console.log('groupId', groupId)
+		console.log('task', task)
 		axios.post(`/api/group/${groupId}/tasks`, { task })
 			.then(res => {
 				dispatch({

@@ -25,11 +25,14 @@ class GroupPage extends Component {
 			return (
 				<TodoContainer
 					tasks={this.props.groupTasks}
-					// completeTask={} 
 					loading={this.props.loading}
 					loadingComplete={this.props.loadingComplete}
+					addTask={this.props.groupAddTask}
+					id={parseInt(this.props.match.params.groupId)}
 				/>)
 		}
+
+
 
 		else return(
 			<div>

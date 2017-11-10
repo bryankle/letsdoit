@@ -27,7 +27,7 @@ class Todo extends Component {
 
     render() {
 
-        const { tasks, completeTask, addTask } = this.props;
+        const { tasks, completeTask, addTask, id } = this.props;
 
         if (!this.props.loading.status) {
             // let tasks = groupTasks ? groupTasks : userTasks; // If group tasks were passed in as props, render instead of user tasks
@@ -43,7 +43,7 @@ class Todo extends Component {
                     <Grid centered columns={2}>
                         <Grid.Column>
                         {/* Move form to separate container? at later time */}
-                        <TaskForm addTask={addTask}/>
+                        <TaskForm id={id} addTask={addTask}/>
                         
                         <ProgressBar percent={percent}/>
                         <Tasks tasks={tasks} completeTask={completeTask}/>

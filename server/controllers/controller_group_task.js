@@ -18,12 +18,9 @@ exports.loadTasks = (req, res, next) => {
 exports.addTask = (req, res, next) => {
     const { groupId } = req.params;
     const { task } = req.body;
-    Group.findById(groupId)
-        .then(() => {
-            return Task.create({
+        return Task.create({
                 content: task,
                 groupId
-            })
         })
         .then(task => {
             console.log('Group task added');
