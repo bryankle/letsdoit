@@ -31,9 +31,6 @@ exports.addTask = (req, res, next) => {
         })
         .catch(err => console.log(err))
 }
-
-
-
 // REFERENCE FROM USER TASK CONTROLLER
 // exports.addtask = (req, res, next) => {
 //     const task = req.body.task;

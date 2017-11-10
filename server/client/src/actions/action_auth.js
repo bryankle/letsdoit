@@ -24,6 +24,7 @@ export function signinUser({ name, password }, redirect) {
 
 				localStorage.setItem('token', response.data.token);
 				localStorage.setItem('userId', response.data.user.id);
+				localStorage.setItem('name', name);
 				// - redirect tot he route '/feature' --> '/tasks'
 				// loadTasks(name).then(() =>)
 
