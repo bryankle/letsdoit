@@ -19,3 +19,17 @@ export function groupLoadTasks(groupId) {
 			})
 	}
 }
+// 	app.post('/api/group/:groupId/tasks', GroupTaskController.addTask);
+
+export function groupAddTask(groupId, task) {
+	return function(dispatch) {
+		console.log("ACTION - groupAddTask");
+		axios.post(`/api/group/${groupId}/tasks`, { task })
+			.then(res => {
+				dispatch({
+					type: GROUP_ADD_TASK,
+					payload: res.data
+				})
+			})
+	}
+}

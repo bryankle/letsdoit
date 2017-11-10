@@ -46,7 +46,7 @@ module.exports = function(app) {
 	// Retrieve all group tasks
 	app.get('/api/group/:groupId/tasks', GroupTaskController.loadTasks);
 	// Create new group task
-	app.post('/api/group/:groupId/tasks');
+	app.post('/api/group/:groupId/tasks', GroupTaskController.addTask);
 	// Complete group task
 	app.put('/api/group/:groupId/tasks/:taskId')
 	// Remove all completed tasks
