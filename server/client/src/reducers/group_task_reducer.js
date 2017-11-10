@@ -13,6 +13,9 @@ export default function(state={}, action) {
 			console.log('action.payload', action.payload)
 			return action.payload;
 		case GROUP_ADD_TASK:
+			console.log('REDUCER - GROUP_ADD_TASK')
+			console.log('action.payload', action.payload)
+			console.log('state', state);
 			return {...state, tasks: [...state.tasks, action.payload]}
 		default:
 			return state;

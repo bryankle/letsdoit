@@ -20,6 +20,7 @@ exports.addTask = (req, res, next) => {
     const { task } = req.body;
         return Task.create({
                 content: task,
+                completed: false,
                 groupId
         })
         .then(task => {
