@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Progress } from 'semantic-ui-react';
 
 
-const ProgressBar = (props) => (
+const ProgressBar = ({percent}) => (
         <div>
-	        <Progress percent={props.percent} indicating />
+	        <Progress percent={percent} indicating />
 	    </div>
 	)
     

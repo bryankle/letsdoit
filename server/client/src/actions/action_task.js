@@ -51,7 +51,7 @@ export const completeTask = (userId, taskId) => {
 	}
 }
 
-export function clearCompletedTasks (user) {
+export const clearCompletedTasks = (user) => {
 	console.log('ACTION - clearCompletedTasks')
 	axios.delete(`${ROOT_URL}/api/tasks/${user}`)
 	return {

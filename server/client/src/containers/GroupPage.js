@@ -15,26 +15,12 @@ class GroupPage extends Component {
 		// axios.post(`/api/group/1/tasks`, { task: 'testing' })
 		this.props.groupAddTask(1, 'hello testing')
 	}
-
-
-// export function groupAddTask(groupId, task) {
-// 	return function(dispatch) {
-// 		console.log("ACTION - groupAddTask");
-// 		axios.post(`/api/group/${groupId}/tasks`, { task })
-// 			.then(res => {
-// 				dispatch({
-// 					type: GROUP_ADD_TASK,
-// 					payload: res.data
-// 				})
-// 			})
-// 	}
-// }
-
+	
 	render() {
 		console.log('GroupPage')
 		console.log('this.props', this.props)
 		if (this.props.match.params.groupId) {
-			return <TodoContainer group={true}/>
+			return <TodoContainer groupTasks={this.props.groupTasks}/>
 		}
 
 		// else return(

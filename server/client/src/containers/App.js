@@ -17,7 +17,7 @@ import Welcome from './Welcome';
 import SidebarMenu from './SidebarMenu';
 import GroupList from './GroupList';
 import GroupPage from './GroupPage';
-import DropdownMenu from '../components/DropdownMenu';
+import UserPage from './UserPage';
 import axios from 'axios'; // Testing with axios
 
 /*
@@ -38,7 +38,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {},
       currentUser: localStorage.user
     }
   }
@@ -52,8 +51,6 @@ class App extends Component {
     this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
     console.log("componentDidMount - TESTING API END POINT")
     console.log(this.props)
-    // this.props.addGroup('testgroup', 'testcreator')
-    // axios.post('/api/groups/', { name: 'testgroup', creator: 'testcreator' })
 
 
   }
@@ -88,7 +85,7 @@ class App extends Component {
           <Sidebar.Pusher style={{ height: '100vh'}}>
               <Switch>
                 <Route exact path="/" component={Welcome} />
-                <Route path="/tasks" component={RequireAuth(TodoContainer)} />
+                <Route path="/tasks" component={RequireAuth(UserPage)} />
                 <Route path="/groups" component={GroupList} />
                 <Route path="/group/:groupId" component={GroupPage}/>
                 <Route path="/features" component={RequireAuth(Features)} />
@@ -98,10 +95,7 @@ class App extends Component {
               </Switch>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-
-  
       </div>
-
       </Router>
     );
   }

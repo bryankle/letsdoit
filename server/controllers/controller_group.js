@@ -35,7 +35,8 @@ exports.loadGroups = (req, res, next) => {
 	console.log('CONTROLLER - loadGroups')
 	Group.findAll({
 		include: [{
-			model: User
+			model: User,
+			as: 'users'
 		}]
 	})
 	.then(group => {

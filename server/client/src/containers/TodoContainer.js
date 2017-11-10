@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+// import { connect } from 'react-redux';
+// import * as actions from '../actions';
 import { Grid } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
@@ -13,8 +13,8 @@ class Todo extends Component {
         super(props)
         this.state = {
             input: '',
-            touch: false
-        }
+            touch: false   
+            }
     }
 
     handleInput = function(e) {
@@ -29,11 +29,13 @@ class Todo extends Component {
 
     render() {
 
+        const { userTasks, completeTask, groupTasks } = this.props;
+
         if (!this.props.loading.status) {
+            let tasks = groupTasks ? groupTasks : userTasks; // If group tasks were passed in as props, render instead of user tasks
             console.log('this.props', this.props)
-            console.log('this.props.tasks', this.props.tasks)
-            const completedTaskCount = this.props.tasks.filter(task => task.completed).length;
-            const totalTaskCount = this.props.tasks.length
+            const completedTaskCount = tasks.filter(task => task.completed).length;
+            const totalTaskCount = tasks.length
             const percent = (completedTaskCount / totalTaskCount) * 100;
 
             return(
@@ -46,7 +48,7 @@ class Todo extends Component {
                         <TaskForm />
                         
                         <ProgressBar percent={percent}/>
-                        <Tasks tasks={this.props.tasks} completeTask={this.props.completeTask}/>
+                        <Tasks tasks={tasks} completeTask={completeTask}/>
                         </Grid.Column>
                     </Grid>
                 </div>
@@ -61,12 +63,13 @@ class Todo extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { 
-            loading: state.loading,
-            user: state.auth.user,
-            tasks: state.tasks
-        } 
-}
+// function mapStateToProps(state) {
+//     return { 
+//             loading: state.loading,
+//             user: state.auth.user, // Why do we need this? - Delete later
+//             userTasks: state.tasks
+//         } 
+// }
 
-export default connect(mapStateToProps, actions)(Todo);
+// export default connect(mapStateToProps, actions)(Todo);
+export default(Todo);
