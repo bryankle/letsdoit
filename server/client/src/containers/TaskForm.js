@@ -1,72 +1,49 @@
-import React, { Component } from 'react';
-import { Form, Input } from 'semantic-ui-react';
-import { reset, reduxForm, Field } from 'redux-form';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+import React, { Component } from "react";
+import { Form, Input } from "semantic-ui-react";
+
+/*
+    REMOVE REDUX FROM COMPONENT LATER
+    PASS IN ADDTASK AS PROPS
+*/
 
 class TaskForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-	constructor(props) {
-		super(props)
-		this.state = {
-			inputValue: ''
-		}
-	}
+  handleChange(e) {
+    this.setState({ inputValue: e.target.value });
+  }
 
-    handleFormSubmit({ task }) {
-        // Prevent empty task from being created
-        if (task !== '') {
-            this.props.addTask(localStorage.user, task);
-            console.log('NEW REDUX STATE');
-            console.log(this.props)
-        }
-    }
+  handleSubmit() {
+    console.log("Submitted!");
+    console.log('ID', this.props.id)
+    this.props.addTask(this.props.id, this.state.inputValue);
+    this.setState({ inputValue: "" });
+    console.log("this.state.inputValue", this.state.inputValue);
+  }
 
-    renderInput({ label, input, meta: { touched, error } }) {
-        return (
-            <span>
-            <Input 
-                style={{width: '100%'}}
-                size='massive'
-                placeholder="Let's do something"
-                {...input} />
-            </span>
-            )
-    }
-
-	render() {
-
-        const { handleSubmit } = this.props;
-
-        console.log("TASK FORM actions", this.props);
-		return(
-			<Form 
-                onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                <Field 
-                    name="task" 
-                    component={this.renderInput} 
-                    label="Let's do something!" />
-                <h1>{this.state.inputValue ? `Let's ${this.state.inputValue}!` : ''}</h1> 
-            </Form>
-		)
-	}
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Input
+          onChange={this.handleChange}
+          value={this.state.inputValue}
+          style={{ width: "100%" }}
+          size="massive"
+          placeholder="Let's do something"
+        />
+        <h1>
+          {this.state.inputValue ? `Let's ${this.state.inputValue}!` : ""}
+        </h1>
+      </Form>
+    );
+  }
 }
 
-
-
-function mapStateToProps(state) {
-  return { 
-    errorMessage: state.tasks.error,
-    tasks: state.tasks,
-    user: state.auth.user
-    }
-}
-
-const afterSubmit = (result, dispatch) => {
-    dispatch(reset('taskform'));
-}
-
-export default reduxForm({
-    form: 'taskform', 
-    onSubmitSuccess: afterSubmit
-})(connect(mapStateToProps, actions)(TaskForm))
+export default TaskForm;

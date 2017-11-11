@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { Grid } from 'semantic-ui-react';
 import ProgressBar from '../components/ProgressBar';
 import Tasks from './Tasks';
@@ -13,8 +11,8 @@ class Todo extends Component {
         super(props)
         this.state = {
             input: '',
-            touch: false
-        }
+            touch: false   
+            }
     }
 
     handleInput = function(e) {
@@ -22,24 +20,23 @@ class Todo extends Component {
     }
 
     componentWillMount() {
-        console.log('hello from todocontainer');
-        // this.props.loadTasks(localStorage.user)
-
         setTimeout(() => {
             this.props.loadingComplete();
         }, 1000)
     }
 
     render() {
-        console.log('this.props')
-        console.log(this.props)
-        if (!this.props.loading.status) {
-            const completedTaskCount = this.props.tasks.filter(task => task.completed).length;
-            const totalTaskCount = this.props.tasks.length
-            const percent = (completedTaskCount / totalTaskCount) * 100;
-            console.log('completedTaskCount', completedTaskCount);
-            console.log('percent', percent);
 
+
+        if (!this.props.loading.status) {
+            const { tasks, completeTask, addTask, id } = this.props;
+
+            // let tasks = groupTasks ? groupTasks : userTasks; // If group tasks were passed in as props, render instead of user tasks
+            console.log('this.props', this.props)
+            const completedTaskCount = tasks.filter(task => task.completed).length;
+            const totalTaskCount = tasks.length
+            const percent = (completedTaskCount / totalTaskCount) * 100;
+            console.log("ID", id)
             return(
                 <div>
                     <Header/>
@@ -47,10 +44,17 @@ class Todo extends Component {
                     <Grid centered columns={2}>
                         <Grid.Column>
                         {/* Move form to separate container? at later time */}
-                        <TaskForm />
+                        <TaskForm 
+                            id={id} 
+                            addTask={addTask}
+                        />
                         
                         <ProgressBar percent={percent}/>
-                        <Tasks />
+                        <Tasks 
+                            tasks={tasks} 
+                            completeTask={completeTask}
+                            id={id}
+                            />
                         </Grid.Column>
                     </Grid>
                 </div>
@@ -65,12 +69,4 @@ class Todo extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { 
-            loading: state.loading,
-            user: state.auth.user,
-            tasks: state.tasks
-        } 
-}
-
-export default connect(mapStateToProps, actions)(Todo);
+export default(Todo);

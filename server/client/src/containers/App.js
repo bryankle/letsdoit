@@ -16,7 +16,8 @@ import Features from './Features';
 import Welcome from './Welcome';
 import SidebarMenu from './SidebarMenu';
 import GroupList from './GroupList';
-import DropdownMenu from '../components/DropdownMenu';
+import GroupPage from './GroupPage';
+import UserPage from './UserPage';
 import axios from 'axios'; // Testing with axios
 
 /*
@@ -37,8 +38,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {},
-      currentUser: localStorage.user
+      currentUser: localStorage.name
     }
   }
   // Initial task fetching
@@ -48,11 +48,9 @@ class App extends Component {
 
   componentDidMount() {
     // For when user is already logged in to load tasks
-    this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
+    this.props.auth.authenticated ? this.props.loadTasks(localStorage.userId) : '';
     console.log("componentDidMount - TESTING API END POINT")
     console.log(this.props)
-    // this.props.addGroup('testgroup', 'testcreator')
-    // axios.post('/api/groups/', { name: 'testgroup', creator: 'testcreator' })
 
 
   }
@@ -79,7 +77,7 @@ class App extends Component {
                 Group Tasks
               </Menu.Item>
             </Link>
-            <Menu.Item onClick={() => this.props.clearCompletedTasks(localStorage.user)} name='settings'>
+            <Menu.Item onClick={() => this.props.clearCompletedTasks(localStorage.userId)} name='settings'>
               <Icon name='trash' />
               Clear Completed
             </Menu.Item>
@@ -87,8 +85,9 @@ class App extends Component {
           <Sidebar.Pusher style={{ height: '100vh'}}>
               <Switch>
                 <Route exact path="/" component={Welcome} />
-                <Route path="/tasks" component={RequireAuth(TodoContainer)} />
+                <Route path="/tasks" component={RequireAuth(UserPage)} />
                 <Route path="/groups" component={GroupList} />
+                <Route path="/group/:groupId" component={GroupPage}/>
                 <Route path="/features" component={RequireAuth(Features)} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
@@ -96,10 +95,7 @@ class App extends Component {
               </Switch>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
-
-  
       </div>
-
       </Router>
     );
   }

@@ -28,7 +28,7 @@ class ModalForm extends Component {
     // Action creator
     console.log('handleSubmit');
     console.log('groupName:', groupName);
-    this.props.addGroup(groupName, localStorage.user);
+    this.props.addGroup(groupName, localStorage.name);
     this.closeModal();
 
   }

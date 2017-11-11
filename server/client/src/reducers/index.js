@@ -5,6 +5,7 @@ import authReducer from './auth_reducer';
 import loadingReducer from './loading_reducer';
 import sidebarReducer from './sidebar_reducer';
 import groupReducer from './group_reducer';
+import groupTaskReducer from './group_task_reducer'
 
 const rootReducer = combineReducers({ 
 	tasks: taskReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 	loading: loadingReducer, 
 	sidebar: sidebarReducer,
 	group: groupReducer,
+	groupTasks: groupTaskReducer,
 	form
 })
 

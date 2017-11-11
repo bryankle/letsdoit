@@ -3,6 +3,7 @@ const express = require('express');
 const TaskController = require('../controllers/controller_task');
 const Authentication = require('../controllers/controller_authentication');
 const GroupController = require('../controllers/controller_group');
+const GroupTaskController = require('../controllers/controller_group_task');
 const passportService = require('../services/passport');
 const passport = require('passport');
 // Passport middleware
@@ -23,10 +24,10 @@ module.exports = function(app) {
 	// Replace this with a new route and controller
 
 
-	app.get('/api/tasks/:user', TaskController.loadTask);
-	app.post('/api/tasks/:user', TaskController.addtask);
+	app.get('/api/user/:userId/tasks/', TaskController.loadTask);
+	app.post('/api/user/:userId/tasks/', TaskController.addtask);
 	app.put('/api/user/:userId/tasks/:taskId', TaskController.completeTask);
-	app.delete('/api/tasks/:user', TaskController.clearCompletedTasks)
+	app.delete('/api/user/:userId/tasks/', TaskController.clearCompletedTasks)
 
 	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
@@ -41,6 +42,15 @@ module.exports = function(app) {
 	app.delete('/api/group/:groupId', GroupController.deleteGroup);
 	// Add a user to a group
 	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
+
+	// Retrieve all group tasks
+	app.get('/api/group/:groupId/task', GroupTaskController.loadTasks);
+	// Create new group task
+	app.post('/api/group/:groupId/task', GroupTaskController.addTask);
+	// Complete group task
+	app.put('/api/group/:groupId/task/:taskId', GroupTaskController.completeTask);
+	// Remove all completed tasks
+	app.delete('/api/group/:groupId/task')
 
 	// Test route
 	app.get('/', requireAuth, function(req, res) {
