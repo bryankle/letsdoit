@@ -10,11 +10,11 @@ import {
 const ROOT_URL = 'http://localhost:3001';
 
 // Find userId and pass into tasks 
-export const loadTasks = user => {
+export const loadTasks = userId => {
 	console.log('loadTasks');
-	console.log(user);
+	console.log(userId);
 	return function(dispatch) {
-		axios.get(`${ROOT_URL}/api/tasks/${user}`)
+		axios.get(`${ROOT_URL}/api/user/${userId}/tasks/`)
       	.then(res => {
 	        console.log('res', res)
 	        dispatch({ type: LOAD_TASKS, payload: res.data })

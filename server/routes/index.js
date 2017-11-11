@@ -24,7 +24,7 @@ module.exports = function(app) {
 	// Replace this with a new route and controller
 
 
-	app.get('/api/tasks/:user', TaskController.loadTask);
+	app.get('/api/user/:userId/tasks/', TaskController.loadTask);
 	app.post('/api/user/:userId/tasks/', TaskController.addtask);
 	app.put('/api/user/:userId/tasks/:taskId', TaskController.completeTask);
 	app.delete('/api/tasks/:user', TaskController.clearCompletedTasks)

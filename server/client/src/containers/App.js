@@ -48,7 +48,7 @@ class App extends Component {
 
   componentDidMount() {
     // For when user is already logged in to load tasks
-    this.props.auth.authenticated ? this.props.loadTasks(this.state.currentUser) : '';
+    this.props.auth.authenticated ? this.props.loadTasks(localStorage.userId) : '';
     console.log("componentDidMount - TESTING API END POINT")
     console.log(this.props)
 
