@@ -28,6 +28,7 @@ export const addTask = (userId, task) => {
 			.then(res => {
 				console.log('Task is being added...');
 				console.log("Adding task", task);
+				console.log('User ID is ', userId)
 				dispatch({ 
 					type: ADD_TASK, 
 					payload: res.data 

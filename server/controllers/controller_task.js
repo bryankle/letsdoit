@@ -24,19 +24,16 @@ exports.addtask = (req, res, next) => {
 	const task = req.body.task;
 	const userId = req.params.userId;
 	// Find userID given username
-	return User.findById(userId).then((user) => {
-		console.log('Creating a new task with this ID')
-		console.log(user);
+	
 		return Task.create({
 			content: task,
 			completed: false,
-			userId
+			userId: 1
 		})
 		.then(task => {
 			console.log(`Task: ${task} added`);
 			res.send(task)
 		})
-	})
 	.catch(err => console.log(err))
 	// Assign task parentID (userID) this ID
 }

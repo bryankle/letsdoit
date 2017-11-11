@@ -8,6 +8,8 @@ class UserPage extends Component {
 		super(props)
 	}
 	render() {
+		console.log('UserPage');
+		console.log('localStorage.userId', localStorage.userId)
 		return (
 			<TodoContainer 
 				tasks={this.props.userTasks}
@@ -15,6 +17,7 @@ class UserPage extends Component {
 				loading={this.props.loading}
 				loadingComplete={this.props.loadingComplete}
 				addTask={this.props.addTask}
+				id={parseInt(localStorage.userId)}
 			/>
 		)
 	}
