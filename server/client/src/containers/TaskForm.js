@@ -33,6 +33,7 @@ class TaskForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <Input
           onChange={this.handleChange}
+          value={this.state.inputValue}
           style={{ width: "100%" }}
           size="massive"
           placeholder="Let's do something"

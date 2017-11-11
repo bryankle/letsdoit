@@ -24,7 +24,7 @@ export const loadTasks = user => {
 
 export const addTask = (userId, task) => {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/api/tasks/${userId}`, { task })
+		axios.post(`${ROOT_URL}/api/user/${userId}/tasks/`, { task })
 			.then(res => {
 				console.log('Task is being added...');
 				console.log("Adding task", task);
