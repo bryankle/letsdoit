@@ -48,7 +48,7 @@ module.exports = function(app) {
 	// Create new group task
 	app.post('/api/group/:groupId/tasks', GroupTaskController.addTask);
 	// Complete group task
-	app.put('/api/group/:groupId/tasks/:taskId')
+	app.put('/api/group/:groupId/tasks/:taskId', GroupTaskController.completeTask);
 	// Remove all completed tasks
 	app.delete('/api/group/:groupId/tasks')
 

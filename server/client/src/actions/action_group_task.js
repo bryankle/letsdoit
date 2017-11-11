@@ -7,7 +7,7 @@ import {
 } from './types';
 
 // ('/api/group/:groupId/tasks'
-export function groupLoadTasks(groupId) {
+export const groupLoadTasks = (groupId) => {
 	return function(dispatch) {
 		console.log('ACTION - groupLoadTasks')
 		axios.get(`/api/group/${groupId}/tasks`)
@@ -21,12 +21,13 @@ export function groupLoadTasks(groupId) {
 }
 // 	app.post('/api/group/:groupId/tasks', GroupTaskController.addTask);
 
-export function groupAddTask(groupId, task) {
+export const groupAddTask = (groupId, task) => {
 	return function(dispatch) {
 		console.log("ACTION - groupAddTask");
 		console.log('groupId', groupId)
-		console.log('task', task)
-		axios.post(`/api/group/${groupId}/tasks`, { task })
+		console.log('Task is being added...');
+		console.log("Adding task", task);
+			axios.post(`/api/group/${groupId}/tasks`, { task })
 			.then(res => {
 				dispatch({
 					type: GROUP_ADD_TASK,
@@ -35,3 +36,36 @@ export function groupAddTask(groupId, task) {
 			})
 	}
 }
+
+
+
+export const groupCompleteTask = (groupId, taskId) => {
+	console.log('ACTIONS - groupCompleteTask')
+	console.log('groupId', groupId)
+	return function(dispatch) {
+		axios.put(`/api/group/${groupId}/tasks/${taskId}`)
+			.then(res => {
+				dispatch({
+					type: GROUP_COMPLETE_TASK,
+					payload: res.data
+
+				})
+			})
+	}
+}
+
+
+
+// export const completeTask = (userId, taskId) => {
+// 	console.log("ACTIONS - completeTask")
+// 	return function(dispatch) {
+// 		axios.put(`${ROOT_URL}/api/user/${userId}/tasks/${taskId}`)
+// 			.then(res => {
+// 				console.log('ACTIONS - DISPATCHING COMPLETE_TASK')
+// 				dispatch({
+// 					type: COMPLETE_TASK,
+// 					payload: res.data
+// 				})
+// 			})
+// 	}
+// }

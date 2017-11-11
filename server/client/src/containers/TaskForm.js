@@ -22,8 +22,10 @@ class TaskForm extends Component {
     }
 
     handleSubmit() {
+        console.log('Submitted!')
         this.props.addTask(this.props.id, this.state.inputValue);
         this.setState({ inputValue: '' })
+        console.log('this.state.inputValue', this.state.inputValue)
     }
   
 	render() {

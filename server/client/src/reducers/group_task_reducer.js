@@ -17,7 +17,30 @@ export default function(state={}, action) {
 			console.log('action.payload', action.payload)
 			console.log('state', state);
 			return {...state, tasks: [...state.tasks, action.payload]}
+		case GROUP_COMPLETE_TASK:
+			console.log('REDUCER - GROUP_COMPLETE_TASK');
+			console.log('action.payload', action.payload);
+			console.log('state', state);
+			const { groupId, taskId } = action.payload;
+
+			let completedTask = state.tasks.find(task => task.id === parseInt(taskId))
+			completedTask.completed = true;
+			return {...state, tasks: [...state.tasks]}
 		default:
 			return state;
 	}
 }
+
+
+// case COMPLETE_TASK:
+// 			console.log("REDUCERS - COMPLETE_TASK")
+// 			console.log('action.payload', action.payload)
+// 			const { userId, taskId } = action.payload;
+// 			console.log('state', state)
+// 			var completedTask = state.find((task) => {
+// 				console.log(task.id, 'and', taskId)
+// 				return task.id === parseInt(taskId);
+// 			})
+// 			completedTask.completed = true;
+// 			console.log('completedTask', completedTask);
+// 			return [...state]

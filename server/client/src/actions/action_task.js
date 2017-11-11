@@ -10,7 +10,7 @@ import {
 const ROOT_URL = 'http://localhost:3001';
 
 // Find userId and pass into tasks 
-export function loadTasks(user) {
+export const loadTasks = user => {
 	console.log('loadTasks');
 	console.log(user);
 	return function(dispatch) {
@@ -24,17 +24,18 @@ export function loadTasks(user) {
 
 export const addTask = (userId, task) => {
 	return function(dispatch) {
-		axios.post(`${ROOT_URL}/api/tasks/${userId}`, { 
-				task: task
-				}
-			)
+		axios.post(`${ROOT_URL}/api/tasks/${userId}`, { task })
 			.then(res => {
 				console.log('Task is being added...');
 				console.log("Adding task", task);
-				dispatch({ type: ADD_TASK, payload: res.data })
+				dispatch({ 
+					type: ADD_TASK, 
+					payload: res.data 
+				})
 			})
 	}
 }
+
 
 export const completeTask = (userId, taskId) => {
 	console.log("ACTIONS - completeTask")

@@ -6,6 +6,9 @@ import TaskItem from '../components/TaskItem';
   // Map over task items and set filters on different tabs
 
 class Tabs extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     render() {
             console.log('USER TASKS RENDERING');
@@ -16,13 +19,16 @@ class Tabs extends Component {
             let completedTasks = [];
             let allTasks = [];
 
+            const { id } = this.props;
+            console.log('TABS')
+            console.log('id', id)
             this.props.tasks.forEach((task) => {
 
                 if (!task.completed) {
                     activeTasks.push(<TaskItem 
                         handleClick={() => {
                             // Send to database task completion
-                            this.props.completeTask(task.userId, task.id) // userId, taskId
+                            this.props.completeTask(id, task.id) // userId, taskId
                         }}
                         // Render unchecked box for incompleted tasks
                         completed={false}

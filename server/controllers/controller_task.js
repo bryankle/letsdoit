@@ -53,17 +53,13 @@ exports.completeTask = (req, res, next) => {
 }
 
 exports.clearCompletedTasks = (req, res, next) => {
-	const user = req.params.user;
-	return User.findOne({ where: { name: user } })
-		.then(user => {
-			const userId = user.dataValues.id
-			Task.destroy({
+	const userId = req.params.user;
+	return Task.destroy({
 				where: {
 					userId,
 					completed: true
 				}
 			})
-		})
 	.then((data) => res.send('Successfully cleared'))
 	.catch(err => console.log(err))
 

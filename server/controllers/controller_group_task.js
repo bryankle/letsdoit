@@ -29,30 +29,26 @@ exports.addTask = (req, res, next) => {
         })
         .catch(err => console.log(err))
 }
-// REFERENCE FROM USER TASK CONTROLLER
-// exports.addtask = (req, res, next) => {
-//     const task = req.body.task;
-//     const user = req.params.user;
-//     const userId = 1;
-//     // Find userID given username
-//     return User.findOne({
-//         where: {
-//             name: user
-//         }
-//     }).then((user) => {
-//         console.log('Creating a new task with this ID')
-//         console.log(user);
-//         console.log(user.dataValues.id);
-//         return Task.create({
-//             content: task,
-//             completed: false,
-//             userId: user.dataValues.id
-//         })
-//         .then(task => {
-//             console.log(`Task: ${task} added`);
-//             res.send(task)
-//         })
-//     })
-//     .catch(err => console.log(err))
-//     // Assign task parentID (userID) this ID
+
+exports.completeTask = (req, res, next) => {
+    console.log('CONTROLLER - completeTask');
+    console.log('req.params', req.params);
+    const { groupId, taskId } = req.params;
+    Task.update(
+        { completed: true },
+        { where: { id: taskId }}
+    )
+    .then(() => res.send({ groupId, taskId }))
+}
+
+
+// exports.completeTask = (req, res, next) => {
+//     console.log('CONTROLLER - completeTask');
+//     console.log('req.params', req.params);
+//     const { userId, taskId } = req.params;
+//     Task.update(
+//         { completed: true },
+//         { where: { id: taskId } }
+//     )
+//     .then(() => res.send({ userId, taskId }))
 // }
