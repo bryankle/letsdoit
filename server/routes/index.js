@@ -44,13 +44,13 @@ module.exports = function(app) {
 	app.post('/api/group/:groupId/add/user/:userId', GroupController.addToGroup);
 
 	// Retrieve all group tasks
-	app.get('/api/group/:groupId/tasks', GroupTaskController.loadTasks);
+	app.get('/api/group/:groupId/task', GroupTaskController.loadTasks);
 	// Create new group task
-	app.post('/api/group/:groupId/tasks', GroupTaskController.addTask);
+	app.post('/api/group/:groupId/task', GroupTaskController.addTask);
 	// Complete group task
-	app.put('/api/group/:groupId/tasks/:taskId', GroupTaskController.completeTask);
+	app.put('/api/group/:groupId/task/:taskId', GroupTaskController.completeTask);
 	// Remove all completed tasks
-	app.delete('/api/group/:groupId/tasks')
+	app.delete('/api/group/:groupId/task')
 
 	// Test route
 	app.get('/', requireAuth, function(req, res) {

@@ -10,7 +10,7 @@ import {
 export const groupLoadTasks = (groupId) => {
 	return function(dispatch) {
 		console.log('ACTION - groupLoadTasks')
-		axios.get(`/api/group/${groupId}/tasks`)
+		axios.get(`/api/group/${groupId}/task`)
 			.then(res => {
 				dispatch({
 					type: GROUP_LOAD_TASKS,
@@ -27,7 +27,7 @@ export const groupAddTask = (groupId, task) => {
 		console.log('groupId', groupId)
 		console.log('Task is being added...');
 		console.log("Adding task", task);
-			axios.post(`/api/group/${groupId}/tasks`, { task })
+			axios.post(`/api/group/${groupId}/task`, { task })
 			.then(res => {
 				dispatch({
 					type: GROUP_ADD_TASK,
@@ -43,7 +43,7 @@ export const groupCompleteTask = (groupId, taskId) => {
 	console.log('ACTIONS - groupCompleteTask')
 	console.log('groupId', groupId)
 	return function(dispatch) {
-		axios.put(`/api/group/${groupId}/tasks/${taskId}`)
+		axios.put(`/api/group/${groupId}/task/${taskId}`)
 			.then(res => {
 				dispatch({
 					type: GROUP_COMPLETE_TASK,
